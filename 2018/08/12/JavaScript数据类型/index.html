@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  <meta name=referrer content=never>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>JavaScript数据类型 | Hexo</title>
+  <meta name="description" content="搬运自：浅谈 javascript 六种数据类型以及特殊注意点 - 浅谈 JavaScript - 极客学院WikiJavaScript 深入了解基本类型和引用类型的值 - percy507的blog - SegmentFault 思否 Js中七种数据类型：Undefined、Null、String、Number、Boolean、Object、Symbol（ES6新加）Symbol表示独一无二的值">
+<meta name="keywords" content="Js数据类型">
+<meta property="og:type" content="article">
+<meta property="og:title" content="JavaScript数据类型">
+<meta property="og:url" content="http://yoursite.com/2018/08/12/JavaScript数据类型/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="搬运自：浅谈 javascript 六种数据类型以及特殊注意点 - 浅谈 JavaScript - 极客学院WikiJavaScript 深入了解基本类型和引用类型的值 - percy507的blog - SegmentFault 思否 Js中七种数据类型：Undefined、Null、String、Number、Boolean、Object、Symbol（ES6新加）Symbol表示独一无二的值">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:updated_time" content="2019-03-29T08:24:26.554Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="JavaScript数据类型">
+<meta name="twitter:description" content="搬运自：浅谈 javascript 六种数据类型以及特殊注意点 - 浅谈 JavaScript - 极客学院WikiJavaScript 深入了解基本类型和引用类型的值 - percy507的blog - SegmentFault 思否 Js中七种数据类型：Undefined、Null、String、Number、Boolean、Object、Symbol（ES6新加）Symbol表示独一无二的值">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/2018/08/12/JavaScript数据类型/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+    
+    
+
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/fackin" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">阿彪</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav">
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/fackin" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/知识笔记-前端/">知识笔记/前端</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Js数据类型/">Js数据类型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/走马灯/">走马灯</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Js数据类型/" style="font-size: 13px;">Js数据类型</a> <a href="/tags/走马灯/" style="font-size: 13px;">走马灯</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/知识笔记-前端/">知识笔记/前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/08/12/JavaScript数据类型/" class="title">JavaScript数据类型</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-08-12T10:57:12.932Z" itemprop="datePublished">2018-08-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/07/17/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-07-16T16:18:07.416Z" itemprop="datePublished">2018-07-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/知识笔记-前端/">知识笔记/前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/07/12/vue-awesome-swiper/" class="title">vue-awesome-swiper</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-07-12T02:10:08.919Z" itemprop="datePublished">2018-07-12</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#基本类型（基本数据类型、原始数据类型等意）"><span class="toc-number">1.</span> <span class="toc-text">基本类型（基本数据类型、原始数据类型等意）</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#引用类型"><span class="toc-number">2.</span> <span class="toc-text">引用类型</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#instanceof："><span class="toc-number">3.</span> <span class="toc-text">instanceof：</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#typeof"><span class="toc-number">4.</span> <span class="toc-text">typeof</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#为各种数据类型的对象变量设置初始值"><span class="toc-number">5.</span> <span class="toc-text">为各种数据类型的对象变量设置初始值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#undefined和null的区别和注意点"><span class="toc-number">6.</span> <span class="toc-text">undefined和null的区别和注意点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Boolean注意点"><span class="toc-number">7.</span> <span class="toc-text">Boolean注意点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Number注意点"><span class="toc-number">8.</span> <span class="toc-text">Number注意点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#String-类型"><span class="toc-number">9.</span> <span class="toc-text">String 类型</span></a></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-JavaScript数据类型" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      JavaScript数据类型
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/08/12/JavaScript数据类型/" class="article-date">
+	  <time datetime="2018-08-12T10:57:12.932Z" itemprop="datePublished">2018-08-12</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/知识笔记-前端/">知识笔记/前端</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Js数据类型/">Js数据类型</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/08/12/JavaScript数据类型/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p>搬运自：<br><a href="http://wiki.jikexueyuan.com/project/brief-talk-js/on-six-data-type.html" target="_blank" rel="noopener">浅谈 javascript 六种数据类型以及特殊注意点 - 浅谈 JavaScript - 极客学院Wiki</a><br><a href="https://segmentfault.com/a/1190000006752076" target="_blank" rel="noopener">JavaScript 深入了解基本类型和引用类型的值 - percy507的blog - SegmentFault 思否</a></p>
+<p>Js中七种数据类型：<br>Undefined、Null、String、Number、Boolean、Object、Symbol（ES6新加）<br>Symbol表示独一无二的值。</p>
+<h2 id="基本类型（基本数据类型、原始数据类型等意）"><a href="#基本类型（基本数据类型、原始数据类型等意）" class="headerlink" title="基本类型（基本数据类型、原始数据类型等意）"></a>基本类型（基本数据类型、原始数据类型等意）</h2><p> 6 种基本数据类型：Undefined、Null、Boolean、Number、String、Symbol</p>
+<p>1，基本类型的值是不可变的<br>2，基本类型的比较是它们的值的比较<br>3，基本类型的变量是存放在栈内存（Stack）里的</p>
+<h2 id="引用类型"><a href="#引用类型" class="headerlink" title="引用类型"></a>引用类型</h2><p>引用类型，统称为 Object 类型。细分的话，有：Object 类型、Array 类型、Date 类型、RegExp 类型、Function 类型 等</p>
+<p>1，引用类型的值是可变的<br>2，引用类型的比较是引用的比较<br>3，引用类型的值是保存在堆内存（Heap）中的对象（Object）<br>与其他编程语言不同，JavaScript 不能直接操作对象的内存空间（堆内存）。</p>
+<h2 id="instanceof："><a href="#instanceof：" class="headerlink" title="instanceof："></a>instanceof：</h2><p>用来判断某个构造函数的 prototype 属性所指向的对象是否存在于另外一个要检测对象的原型链上</p>
+<p>简单说就是判断一个引用类型的变量具体是不是某种类型的对象<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">console.log(&#123;&#125; instanceof Object); // true</span><br><span class="line">console.log([] instanceof Object); // true</span><br><span class="line">console.log([] instanceof Array);  // true</span><br><span class="line">console.log(&#123;&#125; instanceof Array);  // false</span><br><span class="line"></span><br><span class="line">(/aa/g) instanceof RegExp           // true</span><br><span class="line">(function()&#123;&#125;) instanceof Function  // true</span><br></pre></td></tr></table></figure></p>
+<h2 id="typeof"><a href="#typeof" class="headerlink" title="typeof"></a>typeof</h2><p>注意<br>1，typeof是操作符，不是方法<br>2，对null取typeof是object（空的对象引用），对函数取typeof是function<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">&gt;console.info(typeof null);</span><br><span class="line"> object</span><br><span class="line"></span><br><span class="line">&gt;function f()&#123;</span><br><span class="line">console.log(&apos;helo&apos;);</span><br><span class="line">&#125;</span><br><span class="line">console.log(typeof f);</span><br><span class="line"></span><br><span class="line"> function</span><br></pre></td></tr></table></figure></p>
+<h2 id="为各种数据类型的对象变量设置初始值"><a href="#为各种数据类型的对象变量设置初始值" class="headerlink" title="为各种数据类型的对象变量设置初始值"></a>为各种数据类型的对象变量设置初始值</h2><p>注意：如果Object类型的对象变量开始不知道赋值什么，不要用var obj={},最好是var obj = null;<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">var obj = null;</span><br><span class="line">obj = &#123;a:&apos;b&apos;&#125;;</span><br><span class="line"></span><br><span class="line">var a = &apos;&apos;; // 字符串型</span><br><span class="line">var b = 0;  // Number类型</span><br></pre></td></tr></table></figure></p>
+<h2 id="undefined和null的区别和注意点"><a href="#undefined和null的区别和注意点" class="headerlink" title="undefined和null的区别和注意点"></a>undefined和null的区别和注意点</h2><p>1，如果使用“==”比较，它们相等<br>2，如何区分（核心是比较数据类型）<br>（1）typeof<br>（2）“===” 强比较，比较值和类型<br>3，js区分大小写，NULL，Null 等都不是null<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(undefined == null); // true</span><br><span class="line">console.log(typeof undefined == typeof null); // false</span><br><span class="line">console.log(undefined === null); // false</span><br><span class="line">console.log(typeof NULL);  // undefined</span><br></pre></td></tr></table></figure></p>
+<h2 id="Boolean注意点"><a href="#Boolean注意点" class="headerlink" title="Boolean注意点"></a>Boolean注意点</h2><p>1，“==”的比较，true和1（无论是1还是‘1’）是相等的，false和0（或‘0’）是相等的，这是因为内部实现了隐式转换。true转化为1，false为0。但是“===”不等。<br>2，显示转换为Boolean，使用 Boolean() 方法显示转换，需要注意的是各种数据类型，什么时候转换成 true 什么时候转换成 false<br>1）String 类型，只要不是 空字符串 都会 转换成 true<br>2）Number 类型，只要不是 0 ，即使是 负数，都会转换成 true<br>3）Object 类型，只要 不是 null 类型，都会转换成 true<br>4）Undefined 类型，都会转换成 false<br>有意思的一点是‘0’==false 是true，而Boolean(‘0’) == true<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">console.log(&apos;1&apos;==true); // true</span><br><span class="line">console.log(1==true);   // true</span><br><span class="line">console.log(0==false);  // true</span><br><span class="line">console.log(false ==&apos;0&apos;); // true</span><br><span class="line"></span><br><span class="line">console.log(Boolean(-1)); // true</span><br><span class="line">console.log(Boolean(&apos;0&apos;));  // true</span><br><span class="line">console.log(Boolean(null)); // false</span><br><span class="line">console.log(Boolean(&#123;&#125;));   // true</span><br><span class="line">console.log(Boolean(undefined)); // false</span><br></pre></td></tr></table></figure></p>
+<h2 id="Number注意点"><a href="#Number注意点" class="headerlink" title="Number注意点"></a>Number注意点</h2><p>1，float类型 不能精确运算<br>2，支持 科学计数法<br>3，NaN （Not a Number)<br>（1）var a = 0/0, 在js里不报错，返回NaN <code>console.log(0/0); // NaN</code><br>（2）可以通过Number.Nan获取<br>（3）NaN 和 任何 对象做运算都会返回 NaN<br>（4）isNaN() 判断是不是 NaN<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(isNaN(NaN)); // true</span><br><span class="line">console.log(isNaN(true));// false  boolean转换为数字true 1</span><br><span class="line">console.log(isNaN(&apos;a&apos;));  // true</span><br><span class="line">console.log(isNaN(&apos;2&apos;));  // false 数字字符串直接转换成数字</span><br></pre></td></tr></table></figure></p>
+<p>（5）isNaN()内部执行原理：同样适用于对象。实现原理：首先调用对象的 valueOf()方法，如果能转换成数字就直接做判断；如果不能就再调用 toString()方法，然后测试返回值。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">var b = &#123;</span><br><span class="line">toString: function()&#123; // 重写toString()方法</span><br><span class="line">return &apos;123&apos;;</span><br><span class="line">&#125;&#125;;</span><br><span class="line">console.log(isNaN(b)); // false</span><br><span class="line">console.log(b);  // &#123;toString: ƒ&#125;</span><br><span class="line">alert(b);  // 123  alert()内部也是先调用了对象的valueOf()，然后调用toString()方法</span><br></pre></td></tr></table></figure></p>
+<p>（6）将其他数据类型转换成 Number 类型<br>含有三个函数：Number(): 可以针对所有的数据类型进行转换；parseInt()和 parseFloat()只针对 字符串进行转化。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(Number(true)); // 1  </span><br><span class="line">console.log(Number(null)); // 0</span><br><span class="line">console.log(Number(&apos;0222&apos;));// 222</span><br><span class="line">console.log(Number(undefined)); // NaN</span><br></pre></td></tr></table></figure></p>
+<p>Number()内部实现的原理：同 isNaN()也是先调用 valueOf()然后调用toString()。所以可想而知，性能是比较差的。所以只要是被转型的对象是字符串的话，就调用parseInt()或者parseFloat()，因为他们内部不需要对类型做判断。<br>parseInt()和 parseFloat()调用注意：从第一个为数字的字符开始一直到第一个不为数字的字符的前一个数字的这部分字符串转换成数字<br>当 parseInt()里面的参数是 float 类型的那么只取得数字的整数部分<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">console.log(parseInt(&apos;ab234&apos;));  // NaN</span><br><span class="line">console.log(parseInt(&apos;323rer32&apos;)); // 323</span><br><span class="line"></span><br><span class="line">console.log(parseInt(56.12)); // 56</span><br></pre></td></tr></table></figure></p>
+<h2 id="String-类型"><a href="#String-类型" class="headerlink" title="String 类型"></a>String 类型</h2><p>1）（ 重要 ）在 ECMAScript 中 字符串有不变性：字符串创建之后就不会再改变。<br>要改变一个已经被赋值的字符串变量，首先要先销毁变量中字符串，然后再用一个包含新值的字符串填充变量。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">var d=&apos;hello&apos;;  </span><br><span class="line">d=d+&apos;shit&apos;;// 执行过程：先将&apos;hello&apos;赋值一份，然后将d中的字符串清空，将字符串&apos;hello&apos;和&apos;shit&apos;进行拼接，然后赋值给d变量。（所以字符串的值一旦被 创建之后就不会改变)</span><br></pre></td></tr></table></figure></p>
+<p>2）toString()方法将其他数据类型转换成 String 类型。但是如果对 null 或 undefined 进行操作的话就会报错。<br>3）String()方法同样能实现 toString()的效果，但是可以对null和undefined进行操作。<br>内部原理：先调用toString()，如果可以转换成字符串，就将结果直接返回。否则，再进行判断是null还是undefined，然后返回‘null’ 或 ‘undefined’<br>总结：如果知道变量不可能是null或undefined，就使用toString()，性能比 String()高，因为String()内部还要做判断，所以有损性能。</p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2018/08/12/JavaScript数据类型/" title="JavaScript数据类型" target="_blank" rel="external">http://yoursite.com/2018/08/12/JavaScript数据类型/</a>
+    </li>
+    
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/fackin" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/fackin" target="_blank"><span class="text-dark">阿彪</span><small class="ml-1x">Web Developer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+       
+    <div id="vcomments"></div>
+
+    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2018/07/17/hello-world/" title="Hello World"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/fackin" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+
+
+    
+    
+        
+    
+   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/valine"></script>
+   <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+     var meta = 'nick,mail,link';
+     meta = meta.split(',').filter(function (item) {
+       return GUEST.indexOf(item)>-1;
+     });
+     new Valine({
+         el: '#vcomments' ,
+         verify: false,
+         notify: false,
+         appId: '',
+         appKey: '',
+         placeholder: 'Just go go',
+         avatar:'mm',
+         meta:meta,
+         pageSize:'10' || 10,
+         visitor: false
+     });
+   </script>
+
+    
+
+    
+    
+
+
+
+</body>
+</html>

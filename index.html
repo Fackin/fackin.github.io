@@ -1,266 +1,495 @@
 <!DOCTYPE html>
-<html>
+<html lang=zh>
 <head>
   <meta charset="utf-8">
+  <meta name=referrer content=never>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
   
-
   
   <title>Hexo</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
   <meta property="og:type" content="website">
 <meta property="og:title" content="Hexo">
 <meta property="og:url" content="http://yoursite.com/index.html">
 <meta property="og:site_name" content="Hexo">
-<meta property="og:locale" content="default">
+<meta property="og:locale" content="zh-CN">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Hexo">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/index.html">
   
     <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
   
   
-    <link rel="icon" href="/favicon.png">
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
   
-  
-    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
-  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
   <link rel="stylesheet" href="/css/style.css">
+  
+    
+    
+
 </head>
 
-<body>
-  <div id="container">
-    <div id="wrap">
-      <header id="header">
-  <div id="banner"></div>
-  <div id="header-outer" class="outer">
-    <div id="header-title" class="inner">
-      <h1 id="logo-wrap">
-        <a href="/" id="logo">Hexo</a>
-      </h1>
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
       
-    </div>
-    <div id="header-inner" class="inner">
-      <nav id="main-nav">
-        <a id="main-nav-toggle" class="nav-icon"></a>
-        
-          <a class="main-nav-link" href="/">Home</a>
-        
-          <a class="main-nav-link" href="/archives">Archives</a>
-        
-      </nav>
-      <nav id="sub-nav">
-        
-          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
-        
-        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
-      </nav>
-      <div id="search-form-wrap">
-        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/fackin" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">阿彪</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
       </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
     </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav">
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/fackin" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
   </div>
 </header>
-      <div class="outer">
-        <section id="main">
+
   
-    <article id="post-postName" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/17/postName/" class="article-date">
-  <time datetime="2018-07-17T14:34:33.000Z" itemprop="datePublished">2018-07-17</time>
-</a>
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/知识笔记-前端/">知识笔记/前端</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Js数据类型/">Js数据类型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/走马灯/">走马灯</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Js数据类型/" style="font-size: 13px;">Js数据类型</a> <a href="/tags/走马灯/" style="font-size: 13px;">走马灯</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/知识笔记-前端/">知识笔记/前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/08/12/JavaScript数据类型/" class="title">JavaScript数据类型</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-08-12T10:57:12.932Z" itemprop="datePublished">2018-08-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/07/17/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-07-16T16:18:07.416Z" itemprop="datePublished">2018-07-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/知识笔记-前端/">知识笔记/前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/07/12/vue-awesome-swiper/" class="title">vue-awesome-swiper</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-07-12T02:10:08.919Z" itemprop="datePublished">2018-07-12</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
     
   </div>
-  <div class="article-inner">
+</aside>
+
+  
+  <main class="main" role="main">
+  
+  <div class="content article-list">
     
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
     
-      <header class="article-header">
-        
   
     <h1 itemprop="name">
-      <a class="article-title" href="/2018/07/17/postName/">postName</a>
+      <a class="article-title" href="/2018/08/12/JavaScript数据类型/">JavaScript数据类型</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/postName/" data-id="cjjptja6e0001ezvpnqtk3ynh" class="article-share-link">Share</a>
-      
-      
-    </footer>
   </div>
   
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/08/12/JavaScript数据类型/" class="article-date">
+	  <time datetime="2018-08-12T10:57:12.932Z" itemprop="datePublished">8月 12</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/知识笔记-前端/">知识笔记/前端</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/Js数据类型/">Js数据类型</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/08/12/JavaScript数据类型/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
 </article>
 
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/17/hello-world/" class="article-date">
-  <time datetime="2018-07-16T16:18:07.416Z" itemprop="datePublished">2018-07-17</time>
-</a>
     
-  </div>
-  <div class="article-inner">
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
     
-    
-      <header class="article-header">
-        
   
     <h1 itemprop="name">
       <a class="article-title" href="/2018/07/17/hello-world/">Hello World</a>
     </h1>
   
 
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/17/hello-world/" data-id="cjjptja6h0002ezvpckmux2pl" class="article-share-link">Share</a>
-      
-      
-    </footer>
   </div>
   
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/07/17/hello-world/" class="article-date">
+	  <time datetime="2018-07-16T16:18:07.416Z" itemprop="datePublished">7月 17</time>
+	</a>
+</span>
+    
+    
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/17/hello-world/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
 </article>
 
-
+    
+      <article class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+  <div class="article-header">
+    
   
-    <article id="post-vue-awesome-swiper" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2018/07/12/vue-awesome-swiper/" class="article-date">
-  <time datetime="2018-07-12T02:10:08.919Z" itemprop="datePublished">2018-07-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h1 id="vue-awesome-swiper"><a href="#vue-awesome-swiper" class="headerlink" title="vue-awesome-swiper"></a>vue-awesome-swiper</h1><p>#知识笔记/前端#<br>在vue框架中 使用swiper组件<br>参考：<a href="https://www.cnblogs.com/maomao93/p/6830626.html" target="_blank" rel="noopener">vue-swiper的使用 - 流浪_光头 - 博客园</a><br>api：<a href="http://www.swiper.com.cn/api/index2.html" target="_blank" rel="noopener">中文api - Swiper中文网</a><br>官方demo：<a href="https://surmon-china.github.io/vue-awesome-swiper/" target="_blank" rel="noopener">vue-awesome-swiper</a><br>官方配置：<a href="https://github.com/surmon-china/vue-awesome-swiper" target="_blank" rel="noopener">GitHub - surmon-china/vue-awesome-swiper: 🏆 Swiper component for @vuejs</a><br>下载包<br><code>npm install vue-awesome-swiper --save</code><br>  或yarn方式<br><code>yarn add vue-awesome-swiper --save</code></p>
-<p>全局引用<br>    import方式<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// import</span><br><span class="line">import Vue from &apos;vue&apos;</span><br><span class="line">import VueAwesomeSwiper from &apos;vue-awesome-swiper&apos;</span><br><span class="line">// require styles</span><br><span class="line">import &apos;swiper/dist/css/swiper.css&apos;</span><br></pre></td></tr></table></figure></p>
-<pre><code>也可以require方式
-</code></pre><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">var Vue = require(&apos;vue&apos;)</span><br><span class="line">var VueAwesomeSwiper = require(&apos;vue-awesome-swiper&apos;)</span><br><span class="line">require(&apos;swiper/dist/css/swiper.css&apos;)</span><br></pre></td></tr></table></figure>
-<pre><code>再在index.js里全局注册
-</code></pre><p><code>Vue.use(VueAwesomeSwiper)</code></p>
-<p>在模版里引用<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">import &#123; swiper, swiperSlide &#125; from &apos;vue-awesome-swiper&apos;</span><br><span class="line">// require styles</span><br><span class="line">import &apos;swiper/dist/css/swiper.css&apos;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">  components: &#123;</span><br><span class="line">    swiper,</span><br><span class="line">    swiperSlide</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
-<p>不循环切换<br><a href="https://github.com/surmon-china/vue-awesome-swiper/blob/master/examples/02-navigation.vue" target="_blank" rel="noopener">vue-awesome-swiper/02-navigation.vue at master · surmon-china/vue-awesome-swiper · GitHub</a><br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">&lt;swiper :options=&quot;swiperOption&quot;&gt;</span><br><span class="line">  &lt;swiper-slide v-for=&quot;item in picList&quot; :key=&quot;item&quot;&gt;</span><br><span class="line">    &lt;img :src=&quot;item&quot; alt=&quot;&quot; style=&quot;width:100%&quot;&gt;</span><br><span class="line">  &lt;/swiper-slide&gt;</span><br><span class="line">  &lt;div class=&quot;swiper-button-prev&quot; slot=&quot;button-prev&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;div class=&quot;swiper-button-next&quot; slot=&quot;button-next&quot;&gt;&lt;/div&gt;          </span><br><span class="line">&lt;/swiper&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">  export default &#123;</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        swiperOption: &#123;</span><br><span class="line">          navigation: &#123;</span><br><span class="line">            nextEl: &apos;.swiper-button-next&apos;,</span><br><span class="line">            prevEl: &apos;.swiper-button-prev&apos;</span><br><span class="line">          &#125;</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure></p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line">&lt;template&gt;</span><br><span class="line">  &lt;swiper :options=&quot;swiperOption&quot; ref=&quot;mySwiper&quot;&gt;</span><br><span class="line">    &lt;!-- slides --&gt;</span><br><span class="line">    &lt;swiper-slide&gt;I&apos;m Slide 1&lt;/swiper-slide&gt;</span><br><span class="line">    &lt;swiper-slide&gt;I&apos;m Slide 2&lt;/swiper-slide&gt;</span><br><span class="line">    &lt;swiper-slide&gt;I&apos;m Slide 3&lt;/swiper-slide&gt;</span><br><span class="line">    &lt;swiper-slide&gt;I&apos;m Slide 4&lt;/swiper-slide&gt;</span><br><span class="line">    &lt;swiper-slide&gt;I&apos;m Slide 5&lt;/swiper-slide&gt;</span><br><span class="line">    &lt;swiper-slide&gt;I&apos;m Slide 6&lt;/swiper-slide&gt;</span><br><span class="line">    &lt;swiper-slide&gt;I&apos;m Slide 7&lt;/swiper-slide&gt;</span><br><span class="line">    &lt;!-- Optional controls --&gt;</span><br><span class="line">    &lt;div class=&quot;swiper-pagination&quot;  slot=&quot;pagination&quot;&gt;&lt;/div&gt;//</span><br><span class="line">    &lt;div class=&quot;swiper-button-prev&quot; slot=&quot;button-prev&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;swiper-button-next&quot; slot=&quot;button-next&quot;&gt;&lt;/div&gt;</span><br><span class="line">    &lt;div class=&quot;swiper-scrollbar&quot;   slot=&quot;scrollbar&quot;&gt;&lt;/div&gt;</span><br><span class="line">  &lt;/swiper&gt;</span><br><span class="line">&lt;/template&gt;</span><br><span class="line">  </span><br><span class="line">&lt;script&gt;</span><br><span class="line">  // swiper options example:</span><br><span class="line">  export default &#123;</span><br><span class="line">    name: &apos;carrousel&apos;,</span><br><span class="line">    data() &#123;</span><br><span class="line">      return &#123;</span><br><span class="line">        swiperOption: &#123;//以下配置不懂的，可以去swiper官网看api，链接http://www.swiper.com.cn/api/</span><br><span class="line">          // notNextTick是一个组件自有属性，如果notNextTick设置为true，组件则不会通过NextTick来实例化swiper，也就意味着你可以在第一时间获取到swiper对象，&lt;br&gt;　　　　　　　　假如你需要刚加载遍使用获取swiper对象来做什么事，那么这个属性一定要是true</span><br><span class="line">          notNextTick: true,</span><br><span class="line">          // swiper configs 所有的配置同swiper官方api配置</span><br><span class="line">          autoplay: 3000,</span><br><span class="line">          direction : &apos;vertical&apos;,</span><br><span class="line">          grabCursor : true,</span><br><span class="line">          setWrapperSize :true,</span><br><span class="line">          autoHeight: true,</span><br><span class="line">          pagination : &apos;.swiper-pagination&apos;,</span><br><span class="line">          paginationClickable :true,</span><br><span class="line">          prevButton:&apos;.swiper-button-prev&apos;,//上一张</span><br><span class="line">          nextButton:&apos;.swiper-button-next&apos;,//下一张</span><br><span class="line">          scrollbar:&apos;.swiper-scrollbar&apos;,//滚动条</span><br><span class="line">          mousewheelControl : true,</span><br><span class="line">          observeParents:true,</span><br><span class="line">          // 如果自行设计了插件，那么插件的一些配置相关参数，也应该出现在这个对象中，如下debugger</span><br><span class="line">          debugger: true,</span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;,</span><br><span class="line">  &#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
-<p>问题背景<br>走马灯 原使用element ui，但是 轮播按钮是循环的，停不下来，遂换swiper<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-carousel height=&quot;450px&quot;&gt;</span><br><span class="line">  &lt;el-carousel-item v-for=&quot;item in picList&quot; :key=&quot;item&quot;&gt;</span><br><span class="line">    &lt;img :src=&quot;item&quot; alt=&quot;&quot; style=&quot;width:100%&quot;&gt;</span><br><span class="line">  &lt;/el-carousel-item&gt;</span><br><span class="line">&lt;/el-carousel&gt;</span><br></pre></td></tr></table></figure></p>
-<p>element ui API:<a href="http://element.eleme.io/#/zh-CN/component/carousel" target="_blank" rel="noopener">Element</a></p>
-<p><img src="vue-awesome-swiper/111111.jpeg" alt=""></p>
+    <h1 itemprop="name">
+      <a class="article-title" href="/2018/07/12/vue-awesome-swiper/">vue-awesome-swiper</a>
+    </h1>
+  
 
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2018/07/12/vue-awesome-swiper/" data-id="cjjptja690000ezvpui9fh0a0" class="article-share-link">Share</a>
-      
-      
-    </footer>
   </div>
   
+  <p class="article-meta">
+    <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2018/07/12/vue-awesome-swiper/" class="article-date">
+	  <time datetime="2018-07-12T02:10:08.919Z" itemprop="datePublished">7月 12</time>
+	</a>
+</span>
+    
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/知识笔记-前端/">知识笔记/前端</a>
+  </span>
+
+    
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/走马灯/">走马灯</a>
+  </span>
+
+
+    <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2018/07/12/vue-awesome-swiper/#comments" class="article-comment-link">评论</a></span>
+    
+  </p>
 </article>
 
-
-  
-
-
-</section>
-        
-          <aside id="sidebar">
-  
     
-
-  
-    
-
-  
-    
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Archives</h3>
-    <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">July 2018</a></li></ul>
-    </div>
   </div>
 
+   
+</main>
 
-  
-    
-  <div class="widget-wrap">
-    <h3 class="widget-title">Recent Posts</h3>
-    <div class="widget">
-      <ul>
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/fackin" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
         
-          <li>
-            <a href="/2018/07/17/postName/">postName</a>
-          </li>
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
         
-          <li>
-            <a href="/2018/07/17/hello-world/">Hello World</a>
-          </li>
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
         
-          <li>
-            <a href="/2018/07/12/vue-awesome-swiper/">(no title)</a>
-          </li>
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
         
-      </ul>
-    </div>
-  </div>
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
 
-  
-</aside>
-        
-      </div>
-      <footer id="footer">
-  
-  <div class="outer">
-    <div id="footer-info" class="inner">
-      &copy; 2018 John Doe<br>
-      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
     </div>
-  </div>
 </footer>
-    </div>
-    <nav id="mobile-nav">
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
   
-    <a href="/" class="mobile-nav-link">Home</a>
-  
-    <a href="/archives" class="mobile-nav-link">Archives</a>
-  
-</nav>
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+
+
+    
+    
     
 
-<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
 
 
-  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
-  <script src="/fancybox/jquery.fancybox.pack.js"></script>
-
-
-<script src="/js/script.js"></script>
-
-
-
-  </div>
 </body>
 </html>
