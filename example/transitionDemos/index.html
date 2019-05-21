@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>transition学习示例</title>
+	<link rel="stylesheet" type="text/css" href="style.css">
+
+	<script type="text/javascript">
+		// iframe id列表
+		var iframeids = ['if4', 'if5'];
+		var iframehide = "yes";
+		function dyniframesize() {
+			var dynifames = new Array();
+			for (var i = 0;i < iframeids.length; i++) {
+				if (document.getElementById) {
+					dynifames[dynifames.length] = document.getElementById(iframeids[i]);
+					if (dynifames[i] && !window.opera) {
+						dynifames[i].style.display = "block";
+						if (dynifames[i].contentDocument && dynifames[i].contentDocument.body.offsetHeight) {
+							dynifames[i].height = dynifames[i].contentDocument.body.offsetHeight;
+						} else if (dynifames[i].Document && dynifames[i].Document.body.scrollHeight) {
+							dynifames[i].height = dynifames[i].Document.body.scrollHeight;
+						}
+					}
+				}
+				// 
+				if ((document.all || document.getElementById) && iframehide=="no") {
+					var tempobj=document.all? document.all[iframeids[i]] : document.getElementById(iframeids[i]);
+					tempobj.style.display="block";
+				}
+			}
+		}
+
+		if (window.addEventListener) {
+			window.addEventListener("load", dyniframesize, false);
+		} else if (window.attachEvent) {
+			window.attachEvent("onload", dyniframesize);
+		} else {
+			window.onload = dyniframesize;
+		}
+
+
+	</script>
+</head>
+<body>
+	<h1>transition学习示例</h1>
+	<p>学习自该文章：
+		<a href="https://www.cnblogs.com/xiaohuochai/p/5347930.html" target="_blank">https://www.cnblogs.com/xiaohuochai/p/5347930.html</a>
+	</p>
+	<h2>定义</h2>
+	<pre class="md">
+	.test {
+		height: 100px;
+		width: 100px;
+		background-color: #00ff00;
+		transition-duration: 3s;
+		transition-property: all;
+		transition-timing-function: ease;
+		transition-delay: 0s;
+	}
+	.test:hover {
+		width: 500px;
+	}
+	</pre>
+	<iframe src="./1.html"></iframe>
+	<h3>复合属性</h3>
+	<pre class="md">
+	.test {
+		height: 100px;
+		width: 100px;
+		background-color: #00ff00;
+		/*代表持续时间为2s，延迟时间为默认值0s*/
+		transition: 2s;
+	}
+
+	.test:hover {
+		width: 500px;
+	}
+	</pre>
+	<iframe src="./2.html"></iframe>
+	<pre class="md">
+	.test {
+		height: 100px;
+		width: 100px;
+		background-color: #00ff00;
+		/*代表持续时间为1s，延迟时间为2s*/
+		transition: 1s 2s;
+	}
+
+	.test:hover {
+		width: 500px;
+	}
+	</pre>
+	<iframe src="./3.html"></iframe>
+	<h2>过渡属性transition-property</h2>
+	<pre class="md">
+	值: none | all | &lt;transition-property&gt;[,&lt;transition-property&gt;]*
+
+	初始值: all
+
+	应用于: 所有元素
+
+	继承性: 无
+	</pre>
+	<iframe src="4.html" frameborder="0" scrolling="no" id="if4"></iframe>
+	<h2>过渡持续时间transition-duration</h2>
+	<pre class="md">
+	值: &lt;time&gt;[,&lt;time&gt;]*
+
+	初始值: 0s
+
+	应用于: 所有元素
+
+	继承性: 无
+	</pre>
+	<iframe src="./5.html" frameborder="0" scrolling="no" id="if5"></iframe>
+	<pre class="md">
+	.test {
+		height: 100px;
+		width: 100px;
+		background-color: #00ff00;
+		/*代表持续时间为1s，延迟时间为2s*/
+		transition: 1s 2s;
+	}
+
+	.test:hover {
+		width: 500px;
+	}
+	</pre>
+	<iframe src="./6.html"></iframe>
+</body>
+</html>

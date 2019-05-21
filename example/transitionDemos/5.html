@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    body,
+    dl,
+    dd,
+    h2,
+    h3,
+    p {
+      margin: 0;
+    }
+
+    ul {
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    h2 {
+      margin: 0;
+    }
+
+    .l {
+      float: left;
+    }
+
+    .r {
+      float: right;
+    }
+
+    .box {
+      overflow: hidden;
+      width: 600px;
+      background-color: #ccc;
+      line-height: 30px;
+    }
+
+    .con {
+      width: 250px;
+      float: left;
+      text-align: center;
+      position: relative;
+    }
+
+    .con dl {
+      margin-left: 5px;
+      float: left;
+      width: 98%;
+    }
+
+    .con dt {
+      font-weight: bold;
+      margin-bottom: 6px;
+    }
+
+    .con dd {
+      background-color: rgba(255, 255, 255, 0.3);
+      margin-left: 2px;
+      margin-bottom: 4px;
+      cursor: pointer;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .con-ul {
+      width: 300px;
+      display: inline-block;
+      vertical-align: top;
+      border: 2px solid black;
+      overflow: hidden;
+      padding: 6px;
+      border-radius: 10px;
+      margin-top: 70px;
+      position: relative;
+      z-index: 1;
+    }
+
+    .con-ul li {
+      height: 30px;
+      line-height: 30px;
+      font-size: 20px;
+      background-color: rgba(0, 0, 0, 0.5);
+      text-align: left;
+      color: white;
+      cursor: pointer;
+      overflow: hidden;
+    }
+
+    .con-ul li input {
+      width: 70px;
+    }
+
+    .show {
+      width: 300px;
+      float: right;
+      margin-right: 20px;
+    }
+
+    .show-tit {
+      text-align: center;
+      font: 20px/50px "宋体";
+    }
+
+    .show-body {
+      width: 300px;
+      height: 100px;
+      border: 1px solid black;
+      border-radius: 10px;
+      display: inline-block;
+      background-color: #00ff00;
+      transition: 3s;
+    }
+
+
+    #show-img {
+      text-align: center;
+    }
+        @media (max-width:700px) {
+      .box{width:100%;box-sizing: border-box;}
+      .show,.con{float:none;overflow:hidden;width:100%;box-sizing: border-box;margin:0;}
+      .show-body{width: 100%;display:block;box-sizing: border-box;}
+      .color{width: 100%;height:auto;line-height:30px;}
+      #input{width:130px;font-size:12px;}
+      .con dt{margin:0;}
+      .con dl{margin:0;width:100%;}
+      .con dl dd{float:left;width:31%;margin:1%;}
+      #conUl{width:100%;box-sizing: border-box;}
+      .con li {font-size:14px;}
+      .color{font-size:12px;}
+    }        
+  </style>
+</head>
+
+<body>
+  <div class="box" id="box">
+    <div class="show">
+      <h2 class="show-tit">过渡演示</h2>
+      <span class="show-body" id="sb"></span>
+      <div id="show-img"></div>
+    
+    </div>
+    <div class="con">
+      <dl>
+        <dt>transition-duration</dt>
+        <dd>-1s</dd>
+        <dd>0</dd>
+        <dd>0s</dd>
+        <dd>500ms</dd>
+        <dd>1s,4s</dd>
+      </dl>
+
+      <button id="reset" style="position: absolute; right:0;bottom:0px;">还原</button>
+      <!-- 添加测试单元1结束 -->
+
+    </div>
+
+  </div>
+
+  <script>
+    function getCSS(obj, style) { // 获取css样式
+      if (window.getComputedStyle) {
+        return getComputedStyle(obj)[style];
+      }
+      return obj.currentStyle[style];
+    };
+    function fnShow(obj) { // 改变宽度/背景色
+      obj.style.width = '100px';
+      obj.style.backgroundColor = 'lightblue';
+    }
+    function fnReset(obj) { // 初始化宽度/背景色
+      obj.style.backgroundColor = '#00ff00';
+      obj.style.width = '300px';
+    }
+    (function con() {
+      var oBox = document.getElementById('box');
+      var aDl = oBox.getElementsByTagName('dl');
+      var oSb = document.getElementById('sb');
+      var oImg = document.getElementById('show-img');
+      // 还原
+      reset.onclick = function () {
+        history.go();
+      }
+      for (var i = 0, leni = aDl.length; i < leni; i++) {
+        var oDt = aDl[i].getElementsByTagName('dt')[0];
+        var aDd = aDl[i].getElementsByTagName('dd');
+        aDl[i].last = 0; // 初始化默认值
+        for (var j = 0, lenj = aDd.length; j < lenj; j++) {
+          aDd[j].index = j;
+          aDd[j].onmouseout = function () { // 移出tab即还原状态
+            fnReset(oSb);
+          }
+          aDd[j].onclick = function () { // 点击改变css属性
+            var oDl = this.parentNode;
+            var oDt = oDl.getElementsByTagName('dt')[0];
+            var aDd = oDl.getElementsByTagName('dd');
+            // 还原上一次选项按钮样式
+            aDd[oDl.last].style.cssText = 'color: black; background-color: rgba(255,255,255,0.3);';
+            // 按钮样式
+            this.style.cssText = 'color: white; background-color: black;';
+
+            // 获取标题即要改变的属性名
+            var str = oDt.innerHTML.replace(/(^\w|-\w)/g, function (match, pos, originalText) {
+              return match.toUpperCase().replace('-', '');
+            });
+            // 修改属性
+            oSb.style['Moz' + str] = oSb.style['webkit' + str] = oSb.style[oDt.innerHTML] = this.innerHTML;
+            // 获取样式 展示
+            if (getCSS(oSb, 'transition')) {
+              oImg.innerHTML = 'transition:' + getCSS(oSb, 'transition');
+            }
+            // 改变样式表现过渡效果
+            fnShow(oSb);
+            // 重设选中节点
+            oDl.last = this.index;
+          }
+        }
+      }
+
+    })();
+  </script>
+</body>
+
+</html>
