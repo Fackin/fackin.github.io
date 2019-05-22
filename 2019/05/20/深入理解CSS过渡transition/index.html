@@ -1,0 +1,636 @@
+<!DOCTYPE html>
+<html lang=zh>
+<head>
+  <meta charset="utf-8">
+  <meta name=referrer content=never>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1, user-scalable=no, minimal-ui">
+  <meta name="renderer" content="webkit">
+  <meta http-equiv="Cache-Control" content="no-transform" />
+  <meta http-equiv="Cache-Control" content="no-siteapp" />
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no,email=no,adress=no">
+  <!-- Color theme for statusbar -->
+  <meta name="theme-color" content="#000000" />
+  <!-- 强制页面在当前窗口以独立页面显示,防止别人在框架里调用页面 -->
+  <meta http-equiv="window-target" content="_top" />
+  
+  
+  <title>深入理解CSS过渡transition | Hexo</title>
+  <meta name="description" content="文章搬运：深入理解CSS过渡transition - 小火柴的蓝色理想 - 博客园 demos  定义过渡transition是一个复合属性，包括transition-property、transition-duration、transition-timing-function、transition-delay这四个子属性。通过这四个子属性的配合来完成一个完整的过渡效果。1234transitio">
+<meta name="keywords" content="transition">
+<meta property="og:type" content="article">
+<meta property="og:title" content="深入理解CSS过渡transition">
+<meta property="og:url" content="http://yoursite.com/2019/05/20/深入理解CSS过渡transition/index.html">
+<meta property="og:site_name" content="Hexo">
+<meta property="og:description" content="文章搬运：深入理解CSS过渡transition - 小火柴的蓝色理想 - 博客园 demos  定义过渡transition是一个复合属性，包括transition-property、transition-duration、transition-timing-function、transition-delay这四个子属性。通过这四个子属性的配合来完成一个完整的过渡效果。1234transitio">
+<meta property="og:locale" content="zh-CN">
+<meta property="og:image" content="http://yoursite.com/2019/05/20/深入理解CSS过渡transition/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3CSS%E8%BF%87%E6%B8%A1transition/006tNc79ly1g38sihe8w9j30u00ujwmf.jpg">
+<meta property="og:image" content="http://yoursite.com/2019/05/20/深入理解CSS过渡transition/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3CSS%E8%BF%87%E6%B8%A1transition/006tNc79ly1g38wu9s09xj30py02gjrj.jpg">
+<meta property="og:updated_time" content="2019-05-22T12:12:53.616Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="深入理解CSS过渡transition">
+<meta name="twitter:description" content="文章搬运：深入理解CSS过渡transition - 小火柴的蓝色理想 - 博客园 demos  定义过渡transition是一个复合属性，包括transition-property、transition-duration、transition-timing-function、transition-delay这四个子属性。通过这四个子属性的配合来完成一个完整的过渡效果。1234transitio">
+<meta name="twitter:image" content="http://yoursite.com/2019/05/20/深入理解CSS过渡transition/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3CSS%E8%BF%87%E6%B8%A1transition/006tNc79ly1g38sihe8w9j30u00ujwmf.jpg">
+  <!-- Canonical links -->
+  <link rel="canonical" href="http://yoursite.com/2019/05/20/深入理解CSS过渡transition/index.html">
+  
+    <link rel="alternate" href="/atom.xml" title="Hexo" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png" type="image/x-icon">
+  
+  <!-- font-awesome CSS -->
+  <!-- <link href="https://cdn.bootcss.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"> -->
+  <link rel="stylesheet" href="/css/style.css">
+  
+    
+    
+
+</head>
+
+
+<body class="main-center theme-black" itemscope itemtype="http://schema.org/WebPage">
+  <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+  <div class="slimContent">
+    <div class="navbar-header">
+      
+      
+      <div class="profile-block text-center">
+        <a id="avatar" href="https://github.com/fackin" target="_blank">
+          <img class="img-circle img-rotate" src="/images/avatar.jpg" width="200" height="200">
+        </a>
+        <h2 id="name" class="hidden-xs hidden-sm">阿彪</h2>
+        <h3 id="title" class="hidden-xs hidden-sm hidden-md">Web Developer</h3>
+        <small id="location" class="text-muted hidden-xs hidden-sm"><i class="icon icon-map-marker"></i> Beijing, China</small>
+      </div>
+      
+      <div class="search" id="search-form-wrap">
+
+    <form class="search-form sidebar-form">
+        <div class="input-group">
+            <input type="text" class="search-form-input form-control" placeholder="搜索" />
+            <span class="input-group-btn">
+                <button type="submit" class="search-form-submit btn btn-flat" onclick="return false;"><i class="icon icon-search"></i></button>
+            </span>
+        </div>
+    </form>
+    <div class="ins-search">
+  <div class="ins-search-mask"></div>
+  <div class="ins-search-container">
+    <div class="ins-input-wrapper">
+      <input type="text" class="ins-search-input" placeholder="想要查找什么..." x-webkit-speech />
+      <button type="button" class="close ins-close ins-selectable" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">×</span></button>
+    </div>
+    <div class="ins-section-wrapper">
+      <div class="ins-section-container"></div>
+    </div>
+  </div>
+</div>
+
+
+</div>
+      <button class="navbar-toggle collapsed" type="button" data-toggle="collapse" data-target="#main-navbar" aria-controls="main-navbar" aria-expanded="false">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+    </div>
+    <nav id="main-navbar" class="collapse navbar-collapse" itemscope itemtype="http://schema.org/SiteNavigationElement" role="navigation">
+      <ul class="nav navbar-nav main-nav">
+        
+        
+        
+        <li class="menu-item menu-item-home">
+          <a href="/.">
+            
+            <i class="icon icon-home-fill"></i>
+            
+            <span class="menu-title">首页</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-archives">
+          <a href="/archives">
+            
+            <i class="icon icon-archives-fill"></i>
+            
+            <span class="menu-title">归档</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-categories">
+          <a href="/categories">
+            
+            <i class="icon icon-folder"></i>
+            
+            <span class="menu-title">分类</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-tags">
+          <a href="/tags">
+            
+            <i class="icon icon-tags"></i>
+            
+            <span class="menu-title">标签</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-repository">
+          <a href="/repository">
+            
+            <i class="icon icon-project"></i>
+            
+            <span class="menu-title">项目</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-books">
+          <a href="/books">
+            
+            <i class="icon icon-book-fill"></i>
+            
+            <span class="menu-title">书单</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-links">
+          <a href="/links">
+            
+            <i class="icon icon-friendship"></i>
+            
+            <span class="menu-title">友链</span>
+          </a>
+        </li>
+        
+        
+        
+        <li class="menu-item menu-item-about">
+          <a href="/about">
+            
+            <i class="icon icon-cup-fill"></i>
+            
+            <span class="menu-title">关于</span>
+          </a>
+        </li>
+        
+      </ul>
+      
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/fackin" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    </nav>
+  </div>
+</header>
+
+  
+    <aside class="sidebar" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    
+      <div class="widget">
+    <h3 class="widget-title">公告</h3>
+    <div class="widget-body">
+        <div id="board">
+            <div class="content">
+                <p>欢迎交流与分享经验!</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">分类</h3>
+    <div class="widget-body">
+      <ul class="category-list"><li class="category-list-item"><a class="category-list-link" href="/categories/知识笔记-前端/">知识笔记/前端</a><span class="category-list-count">2</span></li><li class="category-list-item"><a class="category-list-link" href="/categories/知识笔记-前端-CSS/">知识笔记/前端/CSS</a><span class="category-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签</h3>
+    <div class="widget-body">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/Js数据类型/">Js数据类型</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/transition/">transition</a><span class="tag-list-count">1</span></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/走马灯/">走马灯</a><span class="tag-list-count">1</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">标签云</h3>
+    <div class="widget-body tagcloud">
+      <a href="/tags/Js数据类型/" style="font-size: 13px;">Js数据类型</a> <a href="/tags/flex/" style="font-size: 13px;">flex</a> <a href="/tags/transition/" style="font-size: 13px;">transition</a> <a href="/tags/走马灯/" style="font-size: 13px;">走马灯</a>
+    </div>
+  </div>
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">归档</h3>
+    <div class="widget-body">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/05/">五月 2019</a><span class="archive-list-count">2</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/08/">八月 2018</a><span class="archive-list-count">1</span></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/07/">七月 2018</a><span class="archive-list-count">2</span></li></ul>
+    </div>
+  </div>
+
+
+    
+      
+  <div class="widget">
+    <h3 class="widget-title">最新文章</h3>
+    <div class="widget-body">
+      <ul class="recent-post-list list-unstyled no-thumbnail">
+        
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/知识笔记-前端-CSS/">知识笔记/前端/CSS</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/05/20/深入理解CSS过渡transition/" class="title">深入理解CSS过渡transition</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-20T02:04:09.439Z" itemprop="datePublished">2019-05-20</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/知识笔记-前端-CSS/">知识笔记/前端/CSS</a>
+              </p>
+              <p class="item-title">
+                <a href="/2019/05/10/Flex布局学习/" class="title">Flex布局学习</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2019-05-10T07:50:51.747Z" itemprop="datePublished">2019-05-10</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/知识笔记-前端/">知识笔记/前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/08/12/JavaScript数据类型/" class="title">JavaScript数据类型</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-08-12T10:57:12.932Z" itemprop="datePublished">2018-08-12</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                
+              </p>
+              <p class="item-title">
+                <a href="/2018/07/17/hello-world/" class="title">Hello World</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-07-16T16:18:07.416Z" itemprop="datePublished">2018-07-17</time>
+              </p>
+            </div>
+          </li>
+          
+          <li>
+            
+            <div class="item-inner">
+              <p class="item-category">
+                <a class="category-link" href="/categories/知识笔记-前端/">知识笔记/前端</a>
+              </p>
+              <p class="item-title">
+                <a href="/2018/07/12/vue-awesome-swiper/" class="title">vue-awesome-swiper</a>
+              </p>
+              <p class="item-date">
+                <time datetime="2018-07-12T02:10:08.919Z" itemprop="datePublished">2018-07-12</time>
+              </p>
+            </div>
+          </li>
+          
+      </ul>
+    </div>
+  </div>
+  
+
+    
+  </div>
+</aside>
+
+  
+  
+<aside class="sidebar sidebar-toc collapse" id="collapseToc" itemscope itemtype="http://schema.org/WPSideBar">
+  <div class="slimContent">
+    <nav id="toc" class="article-toc">
+      <h3 class="toc-title">文章目录</h3>
+      <ol class="toc"><li class="toc-item toc-level-2"><a class="toc-link" href="#定义"><span class="toc-number">1.</span> <span class="toc-text">定义</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过渡属性"><span class="toc-number">2.</span> <span class="toc-text">过渡属性</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#transition-property"><span class="toc-number">2.1.</span> <span class="toc-text">transition-property</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#可过渡的样式"><span class="toc-number">2.2.</span> <span class="toc-text">可过渡的样式</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过渡持续时间"><span class="toc-number">3.</span> <span class="toc-text">过渡持续时间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#transition-duration"><span class="toc-number">3.1.</span> <span class="toc-text">transition-duration</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过渡延迟时间"><span class="toc-number">4.</span> <span class="toc-text">过渡延迟时间</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#transition-delay"><span class="toc-number">4.1.</span> <span class="toc-text">transition-delay</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过渡时间函数"><span class="toc-number">5.</span> <span class="toc-text">过渡时间函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#transition-timing-function"><span class="toc-number">5.1.</span> <span class="toc-text">transition-timing-function</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#取值"><span class="toc-number">5.2.</span> <span class="toc-text">取值</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#steps函数"><span class="toc-number">5.3.</span> <span class="toc-text">steps函数</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#贝塞尔曲线"><span class="toc-number">5.4.</span> <span class="toc-text">贝塞尔曲线</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#关键字"><span class="toc-number">5.5.</span> <span class="toc-text">关键字</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#多值"><span class="toc-number">6.</span> <span class="toc-text">多值</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#过渡阶段"><span class="toc-number">7.</span> <span class="toc-text">过渡阶段</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#触发方式"><span class="toc-number">8.</span> <span class="toc-text">触发方式</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#API"><span class="toc-number">9.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#属性"><span class="toc-number">9.1.</span> <span class="toc-text">属性</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#注意事项"><span class="toc-number">9.2.</span> <span class="toc-text">注意事项</span></a></li></ol></li></ol>
+    </nav>
+  </div>
+</aside>
+
+<main class="main" role="main">
+  <div class="content">
+  <article id="post-深入理解CSS过渡transition" class="article article-type-post" itemscope itemtype="http://schema.org/BlogPosting">
+    
+    <div class="article-header">
+      
+        
+  
+    <h1 class="article-title" itemprop="name">
+      深入理解CSS过渡transition
+    </h1>
+  
+
+      
+      <div class="article-meta">
+        <span class="article-date">
+    <i class="icon icon-calendar-check"></i>
+	<a href="/2019/05/20/深入理解CSS过渡transition/" class="article-date">
+	  <time datetime="2019-05-20T02:04:09.439Z" itemprop="datePublished">2019-05-20</time>
+	</a>
+</span>
+        
+  <span class="article-category">
+    <i class="icon icon-folder"></i>
+    <a class="article-category-link" href="/categories/知识笔记-前端-CSS/">知识笔记/前端/CSS</a>
+  </span>
+
+        
+  <span class="article-tag">
+    <i class="icon icon-tags"></i>
+	<a class="article-tag-link" href="/tags/transition/">transition</a>
+  </span>
+
+
+        
+
+        <span class="post-comment"><i class="icon icon-comment"></i> <a href="/2019/05/20/深入理解CSS过渡transition/#comments" class="article-comment-link">评论</a></span>
+        
+      </div>
+    </div>
+    <div class="article-entry markdown-body" itemprop="articleBody">
+      
+        <p>文章搬运：<a href="https://www.cnblogs.com/xiaohuochai/p/5347930.html" target="_blank" rel="noopener">深入理解CSS过渡transition - 小火柴的蓝色理想 - 博客园</a><br> <a href="https://fackin.github.io/example/transitionDemos/index.html" target="_blank" rel="noopener">demos</a> </p>
+<h2 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h2><p>过渡<code>transition</code>是一个复合属性，包括<code>transition-property</code>、<code>transition-duration</code>、<code>transition-timing-function</code>、<code>transition-delay</code>这四个子属性。通过这四个子属性的配合来完成一个完整的过渡效果。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">transition-property: 过渡属性（默认all)</span><br><span class="line">transition-duration: 过渡持续时间（默认值0s）</span><br><span class="line">transition-timing-function: 过渡函数（默认值ease函数）</span><br><span class="line">transition-delay: 过渡延迟时间（默认值0s）</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong> IE9-不支持该属性，safari3.1-6、IOS3.2-6.1、android2.1-4.3需要添加-webkit-前缀；而其余高版本浏览器支持标准写法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">transition: &lt;transition-property&gt; || &lt;transition-duration&gt; || &lt;transition-timing-function&gt; || &lt;transition-delay&gt;</span><br></pre></td></tr></table></figure>
+<p>四个属性中只有<transition-duration>是必填值且不能为0。其中，<transition-duration>和<transition-delay>都是时间。当两个时间同时出现时，第一个是<transition-duration>,第二个是<transition-delay>;当只有一个时间时，它是<transition-duration>，而<transition-delay>为默认值0。</transition-delay></transition-duration></transition-delay></transition-duration></transition-delay></transition-duration></transition-duration></p>
+<p><strong>注意</strong>transition的四个子属性之间不能用逗号分开，只能用空格。因为逗号隔开的是代表不同属性（transition属性支持多值）；而空格隔开代表不同属性的四个关于过渡的子属性。</p>
+<h2 id="过渡属性"><a href="#过渡属性" class="headerlink" title="过渡属性"></a>过渡属性</h2><h3 id="transition-property"><a href="#transition-property" class="headerlink" title="transition-property"></a><code>transition-property</code></h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">值： none | all | &lt;transition-property&gt;[,&lt;transition-property&gt;]*</span><br><span class="line">初始值： all</span><br><span class="line">应用于： 所有元素</span><br><span class="line">继承性： 无</span><br><span class="line"></span><br><span class="line">none: 没有指定任何样式</span><br><span class="line">all： 默认值</span><br></pre></td></tr></table></figure>
+<h3 id="可过渡的样式"><a href="#可过渡的样式" class="headerlink" title="可过渡的样式"></a>可过渡的样式</h3><p>不是所有的CSS样式值都可以过渡，只有具有中间值的属性才具备过渡效果<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">Vstart = 开始值; Vend = 结束值; Vres = 中间值; p = 过渡函数的输出值;</span><br><span class="line">Vres = (1-p) * Vstart + p * Vend;</span><br><span class="line">当Vres具有有效值时，则该CSS样式可过渡</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">颜色: color background-color border-color outline-color</span><br><span class="line">位置: backround-position left right top bottom</span><br><span class="line">长度: </span><br><span class="line">    [1]max-height min-height max-width min-width height width</span><br><span class="line">    [2]border-width margin padding outline-width outline-offset</span><br><span class="line">    [3]font-size line-height text-indent vertical-align  </span><br><span class="line">    [4]border-spacing letter-spacing word-spacing</span><br><span class="line">数字: opacity visibility z-index font-weight zoom</span><br><span class="line">组合: text-shadow transform box-shadow clip</span><br><span class="line">其他: gradient</span><br></pre></td></tr></table></figure>
+<h2 id="过渡持续时间"><a href="#过渡持续时间" class="headerlink" title="过渡持续时间"></a>过渡持续时间</h2><p>单位：秒s或毫秒ms</p>
+<h3 id="transition-duration"><a href="#transition-duration" class="headerlink" title="transition-duration"></a><code>transition-duration</code></h3><p>值: <time>[,<time>]*<br>初始值: 0s<br>应用于: 所有元素<br>继承性: 无<br><strong>注意</strong> 该属性不能为负值<br>         若该属性为0s 则为默认值，若为0 则为无效值。所以必须带单位<br>         该值为单值时，即所有过渡属性都对应同样时间；为多值时，过渡属性按顺序对应持续时间。</time></time></p>
+<h2 id="过渡延迟时间"><a href="#过渡延迟时间" class="headerlink" title="过渡延迟时间"></a>过渡延迟时间</h2><p>定义元素属性延迟多少时间后开始过渡效果，该属性的单位是秒s或毫秒ms</p>
+<h3 id="transition-delay"><a href="#transition-delay" class="headerlink" title="transition-delay"></a><code>transition-delay</code></h3><p>值： <time>[,<time>]*<br>初始值： 0s<br>应用于： 所有元素<br>继承性： 无<br><strong>注意</strong>1.该属性若为负值，无延迟效果，但过渡元素的起始值将从0变为设定值（设定值=延迟时间+持续时间）。若该设定值小于等于0，则无过渡效果；若该设定值大于0，则过渡元素从该设定值开始完成剩余的过渡效果<br>        2.若该属性为0s则为默认值，若为0则为无效值。所以必须带单位<br>        3.该值为单值时，即所有过渡属性都对应同样时间；该值为多值时，过渡属性按照顺序对应持续时间</time></time></p>
+<h2 id="过渡时间函数"><a href="#过渡时间函数" class="headerlink" title="过渡时间函数"></a>过渡时间函数</h2><p>过渡时间函数用于定义元素过渡属性随时间变化的过渡速度变化效果</p>
+<h3 id="transition-timing-function"><a href="#transition-timing-function" class="headerlink" title="transition-timing-function"></a><code>transition-timing-function</code></h3><p>值： <timing-function>[,<timing-function>]*<br>初始值： ease<br>应用于： 所有元素<br>继承性： 无</timing-function></timing-function></p>
+<h3 id="取值"><a href="#取值" class="headerlink" title="取值"></a>取值</h3><p>过渡时间函数共三种取值，分别为关键字、steps函数和bezier函数</p>
+<h3 id="steps函数"><a href="#steps函数" class="headerlink" title="steps函数"></a>steps函数</h3><p>Steps步进函数将过渡时间划分成大小相等的时间间隔来运行<br>steps函数为<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">steps(&lt;integer&gt;[,start | end]?)</span><br><span class="line"></span><br><span class="line">&lt;integer&gt;:用来制定间隔个数（该值只能是正整数）</span><br><span class="line">第二个参数： 该参数可选，默认是end，表示开始值保持一次；若参数为start，表示开始不保持</span><br></pre></td></tr></table></figure></p>
+<p><img src="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3CSS%E8%BF%87%E6%B8%A1transition/006tNc79ly1g38sihe8w9j30u00ujwmf.jpg" alt=""></p>
+<h3 id="贝塞尔曲线"><a href="#贝塞尔曲线" class="headerlink" title="贝塞尔曲线"></a>贝塞尔曲线</h3><p>贝塞尔曲线通过p0-p3四个控制点来控制，其中p0表示(0,0)，p3表示(1,1)。而<transition-timing-function>就通过确定p1(x1,y1)和p2(x2,y2)的值来确定的</transition-timing-function></p>
+<p><img src="%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3CSS%E8%BF%87%E6%B8%A1transition/006tNc79ly1g38wu9s09xj30py02gjrj.jpg" alt=""><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">transition-timing-function</span>: <span class="selector-tag">cubic-bezier</span>(<span class="selector-tag">x1</span>,<span class="selector-tag">y1</span>,<span class="selector-tag">x2</span>,<span class="selector-tag">y2</span>);</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong>  x1y1x2y2都是0到1的值（包括0和1）</p>
+<h3 id="关键字"><a href="#关键字" class="headerlink" title="关键字"></a>关键字</h3><p>关键字其实是bezier函数或steps函数的特殊值</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ease: 开始和结束慢，中间快。相当于cubic-bezier(0.25,0.1,0.25,1)</span><br><span class="line">linear: 匀速。相当于cubic-bezier(0,0,1,1)</span><br><span class="line">ease-in: 开始慢。相当于cubic-bezier(0.42,0,1,1)</span><br><span class="line">ease-out: 结束慢。相当于cubic-bezier(0,0,0.58,1)</span><br><span class="line">ease-in-out: 和ease类似，但比ease幅度大。相当于cubic-bezier(0.42,0,0.58,1)</span><br><span class="line">step-start: 直接位于结束处。相当于steps(1,start)</span><br><span class="line">Step-end: 位于开始处经过时间间隔后结束。相当于steps(1,end)</span><br></pre></td></tr></table></figure>
+<h2 id="多值"><a href="#多值" class="headerlink" title="多值"></a>多值</h2><p>transition的多个属性值用逗号分隔开表示可以同时为多个值设置过渡属性<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">transition</span>: &lt;<span class="selector-tag">single-transition</span>&gt;<span class="selector-attr">[,&lt;single-transition&gt;]</span>*</span><br><span class="line"></span><br><span class="line">&lt;single-transition&gt;: &lt;transition-property&gt; || &lt;transition duration&gt; || &lt;transition-timing-function&gt; || &lt;transition-delay&gt;</span><br><span class="line"></span><br><span class="line">// property为all,timing-function为linear,delay为0s,duration为0s.表示无过渡行为</span><br><span class="line"><span class="selector-tag">transition</span>: 0<span class="selector-tag">s</span>;</span><br></pre></td></tr></table></figure></p>
+<p>1）若不同的transition-property值，对应的transition-delay | transition-timing-function | transition-duration的属性值都相同时，则对应的这些属性设置一个即可<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#test1</span>&#123;</span><br><span class="line">    <span class="attribute">transition-property</span>: width,background;</span><br><span class="line">    <span class="attribute">transition-delay</span>: <span class="number">200ms</span>;</span><br><span class="line">    <span class="attribute">transition-timing-function</span>: linear;</span><br><span class="line">    <span class="attribute">transition-duration</span>: <span class="number">2s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*类似于*/</span></span><br><span class="line"><span class="selector-id">#test2</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">2s</span> linear <span class="number">200ms</span>,background <span class="number">2s</span> linear <span class="number">200ms</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2) 当transition-property 值的个数多于对应的transition-delay | transition-timing-function | transition-duration的属性值（属性值的个数大于1个）时，将按顺序开始取值<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#test1</span>&#123;</span><br><span class="line">    <span class="attribute">transition-property</span>: width,background,opacity;</span><br><span class="line">    <span class="attribute">transition-duration</span>: <span class="number">2s</span>,<span class="number">500ms</span>;</span><br><span class="line">    <span class="attribute">transition-timing-function</span>: linear,ease;</span><br><span class="line">    <span class="attribute">transition-delay</span>: <span class="number">200ms</span>,<span class="number">0s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*类似于*/</span></span><br><span class="line"><span class="selector-id">#test2</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">2s</span> linear <span class="number">200ms</span>,background <span class="number">500ms</span> ease <span class="number">0s</span>,opacity <span class="number">2s</span> linear <span class="number">200ms</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>3)当transition-property 值的个数少于对应的transition-delay | transition-timing-function | transition-duration的属性值个数时，多余的属性值将无效<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#test1</span>&#123;</span><br><span class="line">    <span class="attribute">transition-property</span>: width;</span><br><span class="line">    <span class="attribute">transition-duration</span>: <span class="number">2s</span>,<span class="number">500ms</span>;</span><br><span class="line">    <span class="attribute">transition-timing-function</span>: linear,ease;</span><br><span class="line">    <span class="attribute">transition-delay</span>: <span class="number">200ms</span>,<span class="number">0s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*类似于*/</span></span><br><span class="line"><span class="selector-id">#test2</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">2s</span> linear <span class="number">200ms</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>4) 当transition-property的值中出现一个无效值，它依然按顺序对应transition的其他属性值（其他属性出现无效值，处理情况也类似）<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#test1</span>&#123;</span><br><span class="line">    <span class="attribute">transition-property</span>: width,wuxiao,background;</span><br><span class="line">    <span class="attribute">transition-duration</span>: <span class="number">2s</span>,<span class="number">500ms</span>;</span><br><span class="line">    <span class="attribute">transition-timing-function</span>: linear,ease;</span><br><span class="line">    <span class="attribute">transition-delay</span>: <span class="number">200ms</span>,<span class="number">0s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*类似于*/</span></span><br><span class="line"><span class="selector-id">#test2</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">2s</span> linear <span class="number">200ms</span>,background <span class="number">2s</span> linear <span class="number">200ms</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>5) 当transition-property的值中，有些值重复出现多次，则以最后出现的值为准，前面所有出现的值都被认定为无效值，但依然按顺序对应transition的其他属性值<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-id">#test1</span>&#123;</span><br><span class="line">    <span class="attribute">transition-property</span>: width,width,background;</span><br><span class="line">    <span class="attribute">transition-duration</span>: <span class="number">2s</span>,<span class="number">500ms</span>;</span><br><span class="line">    <span class="attribute">transition-timing-function</span>: linear,ease;</span><br><span class="line">    <span class="attribute">transition-delay</span>: <span class="number">200ms</span>,<span class="number">0s</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/*类似于*/</span></span><br><span class="line"><span class="selector-id">#test2</span>&#123;</span><br><span class="line">    <span class="attribute">transition</span>: width <span class="number">500ms</span> ease <span class="number">0s</span>,background <span class="number">2s</span> linear <span class="number">200ms</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="过渡阶段"><a href="#过渡阶段" class="headerlink" title="过渡阶段"></a>过渡阶段</h2><p>1）过渡开始时间=样式改变的时刻+过渡延迟时间；而过渡结束时间=过渡开始时间+过渡持续时间<br>2）过渡起始值=过渡前的过渡属性值；过渡结束值=过渡完成后的过渡属性值<br>3）过渡分为两个阶段：前进（forward）和反向（reverse）。若前进阶段进行一段时间后进入反响阶段，则方向阶段的初始值时前进阶段结束时的瞬间值<br>4）以hover为例，若在元素非hover态时设置transition，相当于设置的反向状态。而前进和反向是一致的。而如果在元素hover态设置transition，则前进状态以hover态设置的为准，而反向状态以非hover态设置的为准<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">3s</span>;</span><br><span class="line">&#125;    </span><br><span class="line"><span class="selector-class">.test</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">    <span class="attribute">transition</span>: <span class="number">500ms</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>5）如果子元素和父元素过渡属性都一致。若触发子元素过渡时，父元素正在过渡，则将父元素过渡的中间态的值作为子元素过渡的初始值<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.box</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">50px</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="selector-class">.test</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">30px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"test"</span>&gt;</span>test<span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>6）若过渡起始值或过渡开始值为auto，则浏览器不会自己计算成具体数字值，而是不发生过渡效果。所以要过渡某些属性，首先需要将其重置成具体数字值<br><strong>注意</strong> 低版本webkit内核浏览器存在bug，会产生反向的过渡效果<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">    <span class="attribute">-webkit-transition</span>: width <span class="number">2s</span>;</span><br><span class="line">    <span class="attribute">transition</span>:width <span class="number">2s</span>;</span><br><span class="line">&#125;    </span><br><span class="line"><span class="selector-class">.test</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>:auto;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>7）隐式过渡是指一个属性改变引起另一个属性的改变。如border-width是1em，则font-size改变时，border-width也会相应的改变。<strong>firefox和IE浏览器支持隐式过渡。而webkit内核浏览器不支持隐式过渡。</strong><br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span>&#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">-webkit-transition</span>: font-size <span class="number">2s</span>;</span><br><span class="line">    <span class="attribute">transition</span>:font-size <span class="number">2s</span>;</span><br><span class="line">    <span class="attribute">font</span>: <span class="number">20px</span>/<span class="number">100px</span> <span class="string">"宋体"</span>;</span><br><span class="line">&#125;    </span><br><span class="line"><span class="selector-class">.test</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">font-size</span>: <span class="number">40px</span>;</span><br><span class="line">    <span class="attribute">border-right-width</span>: <span class="number">1em</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="触发方式"><a href="#触发方式" class="headerlink" title="触发方式"></a>触发方式</h2><p>一般而言，过渡transition的触发有三种方式，分别是伪类触发、媒体查询触发和javascript触发。其中常用的伪类触发包括:hover、:focus、:active等<br>1）hover<br>鼠标悬停触发<br>2）active<br>用户单击元素并按住鼠标时触发<br>3）focus<br>获得焦点时触发<br>4）@media触发<br>符合媒体查询条件时触发<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* 把浏览器的宽度拖动到小于1000px时触发 */</span></span><br><span class="line">@<span class="keyword">media</span> (max-width: <span class="number">1000px</span>)&#123;</span><br><span class="line">    <span class="selector-class">.test</span>&#123;</span><br><span class="line">        <span class="attribute">width</span>: <span class="number">500px</span>;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>5）点击事件<br>用户点击元素时触发<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">test.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    test.style.width = <span class="string">'300px'</span>;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        test.style.width = <span class="string">'100px'</span>;</span><br><span class="line">    &#125;,<span class="number">3000</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<h2 id="API"><a href="#API" class="headerlink" title="API"></a>API</h2><p>关于过渡transition多事件只有一个，是transitionend事件，它发生在过渡事件完成后<br><strong>注意</strong>safari2.1-6、ISO3.2-6.1、android2.1-4.3需要使用webkitTransitionEnd事件</p>
+<h3 id="属性"><a href="#属性" class="headerlink" title="属性"></a>属性</h3><p>transitionEnd的事件对象具有以下3个私有属性<br>propertyName: 发生transition效果的CSS属性名<br>elapsedTime: 代表发生实际效果的持续时间。若完整进行，则返回完整时间；若中途中断，则返回实际时间<br><strong>注意</strong>该属性具有兼容性问题，chrome返回持续时间加延迟时间，而其他浏览器只返回持续时间</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-id">#test</span>&#123;<span class="attribute">height</span>: <span class="number">100px</span>;<span class="attribute">width</span>: <span class="number">100px</span>;<span class="attribute">background-color</span>: pink;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">transition</span>: <span class="selector-tag">width</span> 1<span class="selector-class">.5s</span> 0<span class="selector-class">.5s</span>;&#125;</span></span><br><span class="line"><span class="css"><span class="selector-id">#test</span><span class="selector-pseudo">:hover</span>&#123;<span class="attribute">width</span>: <span class="number">200px</span>;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">test.addEventListener(<span class="string">"transitionend"</span>, myFunction);</span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">e</span>)</span>&#123;</span></span><br><span class="line"><span class="undefined">    e = e || event;</span></span><br><span class="line"><span class="javascript">    test.innerHTML = <span class="string">'propertyName:'</span> + e.propertyName + <span class="string">'; elapsedTime:'</span> + e.elapsedTime + <span class="string">'; pseudoElement:'</span> + e.pseudoElement;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>pseudoElement: 如果transition效果发生在伪元素，会返回该伪元素的名称，以“::”开头。如果不发生在伪元素上，则返回一个空字符串<br><strong>注意</strong> 若transition效果发生在伪元素上，IE浏览器将不会触发transitionEnd事件<br><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css"><span class="selector-id">#test</span>&#123;<span class="attribute">height</span>: <span class="number">100px</span>;<span class="attribute">width</span>: <span class="number">100px</span>;<span class="attribute">position</span>: relative;<span class="attribute">background-color</span>: lightblue;&#125;</span></span><br><span class="line"><span class="css"><span class="selector-id">#test</span><span class="selector-pseudo">:before</span>&#123;<span class="attribute">content</span>:<span class="string">'我是伪元素'</span>;<span class="attribute">position</span>: absolute;<span class="attribute">height</span>: <span class="number">100px</span>;<span class="attribute">width</span>: <span class="number">100px</span>;<span class="attribute">background-color</span>: pink;</span></span><br><span class="line"><span class="css">    <span class="selector-tag">left</span><span class="selector-pseudo">:200px</span>;&#125;</span></span><br><span class="line"><span class="css"><span class="selector-id">#test</span><span class="selector-pseudo">:hover</span><span class="selector-pseudo">:before</span>&#123;<span class="attribute">width</span>: <span class="number">200px</span>;<span class="attribute">transition</span>: width <span class="number">1.5s</span> <span class="number">0.5s</span>;&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br><span class="line"></span><br><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"test"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">test.addEventListener(<span class="string">"transitionend"</span>, myFunction);</span></span><br><span class="line"><span class="javascript"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params">e</span>)</span>&#123;</span></span><br><span class="line"><span class="javascript">    <span class="built_in">console</span>.log(event)</span></span><br><span class="line"><span class="undefined">    e = e || event;</span></span><br><span class="line"><span class="javascript">    test.innerHTML = <span class="string">'propertyName:'</span> + e.propertyName + <span class="string">'; elapsedTime:'</span> + e.elapsedTime + <span class="string">'; pseudoElement:'</span> + e.pseudoElement;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="注意事项"><a href="#注意事项" class="headerlink" title="注意事项"></a>注意事项</h3><p>1）过渡分为两个阶段：前进阶段和反向阶段。transitionend事件在前进阶段结束时会触发，在反向阶段结束时也会触发<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> index = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//兼容低版本safari、IOS、android</span></span><br><span class="line">test.addEventListener(<span class="string">"webkitTransitionEnd"</span>, myFunction);</span><br><span class="line"><span class="comment">// 标准语法</span></span><br><span class="line">test.addEventListener(<span class="string">"transitionend"</span>, myFunction);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    index++;</span><br><span class="line">    <span class="keyword">this</span>.innerHTML = index;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>2）过渡事件触发的次数与transition-property过渡属性的个数有关。过渡属性有几个就会触发几次<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">width</span> 1<span class="selector-tag">s</span>,<span class="selector-tag">background-color</span> 1<span class="selector-tag">s</span>;</span><br><span class="line"><span class="selector-tag">-webkit-transition</span>: <span class="selector-tag">width</span> 1<span class="selector-tag">s</span>,<span class="selector-tag">background-color</span> 1<span class="selector-tag">s</span>;</span><br></pre></td></tr></table></figure></p>
+<p>3）如果过渡属性是复合属性，如border-width相当于是border-top-width、border-bottom-width、border-left-eidth和border-right-width这四个属性的集合，则过渡事件触发4次<br><strong>注意</strong>在低版本webkit内核浏览器里只触发1次<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">transition</span>: <span class="selector-tag">border-width</span> 1<span class="selector-tag">s</span>;</span><br><span class="line"><span class="selector-tag">-webkit-transition</span>: <span class="selector-tag">border-width</span> 1<span class="selector-tag">s</span>;</span><br></pre></td></tr></table></figure></p>
+<p>4）如果过渡属性是默认值all，则过渡事件的次数是计算后的非复合的过渡属性的个数。如果发生过渡的属性是border-width和width，则经过计算后过渡事件应该触发5次<br><strong>注意</strong>在低版本webkit内核浏览器中处理情况也一致<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span>&#123;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">50px</span>;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">transition</span>:all <span class="number">1s</span>;</span><br><span class="line">    <span class="attribute">-webkit-transition</span>: all <span class="number">1s</span>;</span><br><span class="line">&#125;    </span><br><span class="line"><span class="selector-class">.test</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">border-width</span>: <span class="number">10px</span>;</span><br><span class="line">    <span class="attribute">width</span>: <span class="number">100px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p>5）如果过渡延迟时间为负值，且绝对值大于等于过渡持续时间时，低版本webkit内核浏览器不会产生过渡效果，但会触发过渡事件；而其他浏览器即不会产生过渡效果，也不会触发过渡事件<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">transition</span><span class="selector-pseudo">:width</span> 1<span class="selector-tag">s</span> <span class="selector-tag">-1s</span>;</span><br><span class="line"><span class="selector-tag">-webkit-transition</span>: <span class="selector-tag">width</span> 1<span class="selector-tag">s</span> <span class="selector-tag">-1s</span>;</span><br></pre></td></tr></table></figure></p>
+<p>6）如果过渡属性存在复合属性及该复合属性包含的非复合属性，则浏览器计算复合属性的子属性时，不会重复计算已包含的属性<br><strong>注意</strong> 低版本webkit内核浏览器会出现bug，不仅复合属性被当作一个属性来触发事件，而且会多触发一次<br><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-class">.test</span>&#123;</span><br><span class="line">    <span class="attribute">border</span>: <span class="number">1px</span> solid black;</span><br><span class="line">    <span class="attribute">transition</span>:border-width <span class="number">1s</span>,border-left-width <span class="number">2s</span>;</span><br><span class="line">    <span class="attribute">-webkit-transition</span>: border-width <span class="number">1s</span>,border-left-width <span class="number">2s</span>;</span><br><span class="line">&#125;    </span><br><span class="line"><span class="selector-class">.test</span><span class="selector-pseudo">:hover</span>&#123;</span><br><span class="line">    <span class="attribute">border-width</span>:<span class="number">10px</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+<p><strong>注意</strong> 当过渡事件执行完后，应及时使用removeEventListener取消绑定，以免对其他效果造成影响<br><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> index = <span class="number">0</span>;</span><br><span class="line"><span class="comment">//兼容低版本safari、IOS、android</span></span><br><span class="line">test.addEventListener(<span class="string">"webkitTransitionEnd"</span>, myFunction);</span><br><span class="line"><span class="comment">// 标准语法</span></span><br><span class="line">test.addEventListener(<span class="string">"transitionend"</span>, myFunction);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">myFunction</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">    index++;</span><br><span class="line">    <span class="keyword">this</span>.innerHTML = index;</span><br><span class="line">    <span class="keyword">if</span>(index == <span class="number">1</span>)&#123;</span><br><span class="line">        test.removeEventListener(<span class="string">"webkitTransitionEnd"</span>, myFunction);</span><br><span class="line">        test.removeEventListener(<span class="string">"transitionend"</span>, myFunction);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure></p>
+
+      
+    </div>
+    <div class="article-footer">
+      <blockquote class="mt-2x">
+  <ul class="post-copyright list-unstyled">
+    
+    <li class="post-copyright-link hidden-xs">
+      <strong>本文链接：</strong>
+      <a href="http://yoursite.com/2019/05/20/深入理解CSS过渡transition/" title="深入理解CSS过渡transition" target="_blank" rel="external">http://yoursite.com/2019/05/20/深入理解CSS过渡transition/</a>
+    </li>
+    
+    
+  </ul>
+</blockquote>
+
+
+<div class="panel panel-default panel-badger">
+  <div class="panel-body">
+    <figure class="media">
+      <div class="media-left">
+        <a href="https://github.com/fackin" target="_blank" class="img-burn thumb-sm visible-lg">
+          <img src="/images/avatar.jpg" class="img-rounded w-full" alt="">
+        </a>
+      </div>
+      <div class="media-body">
+        <h3 class="media-heading"><a href="https://github.com/fackin" target="_blank"><span class="text-dark">阿彪</span><small class="ml-1x">Web Developer</small></a></h3>
+        <div>个人简介。</div>
+      </div>
+    </figure>
+  </div>
+</div>
+
+
+    </div>
+  </article>
+  
+    
+  <section id="comments">
+  	
+       
+    <div id="vcomments"></div>
+
+    
+    
+  </section>
+
+
+  
+</div>
+
+  <nav class="bar bar-footer clearfix" data-stick-bottom>
+  <div class="bar-inner">
+  
+  <ul class="pager pull-left">
+    
+    
+    <li class="next">
+      <a href="/2019/05/10/Flex布局学习/" title="Flex布局学习"><span>下一篇&nbsp;&nbsp;</span><i class="icon icon-angle-right" aria-hidden="true"></i></a>
+    </li>
+    
+    
+    <li class="toggle-toc">
+      <a class="toggle-btn collapsed" data-toggle="collapse" href="#collapseToc" aria-expanded="false" title="文章目录" role="button">
+        <span>[&nbsp;</span><span>文章目录</span>
+        <i class="text-collapsed icon icon-anchor"></i>
+        <i class="text-in icon icon-close"></i>
+        <span>]</span>
+      </a>
+    </li>
+    
+  </ul>
+  
+  
+  
+  <div class="bar-right">
+    
+    <div class="share-component" data-sites="weibo,qq,wechat,facebook,twitter" data-mobile-sites="weibo,qq,qzone"></div>
+    
+  </div>
+  </div>
+</nav>
+  
+
+
+</main>
+
+  <footer class="footer" itemscope itemtype="http://schema.org/WPFooter">
+	
+	
+    <ul class="social-links">
+    	
+        <li><a href="https://github.com/fackin" target="_blank" title="Github" data-toggle=tooltip data-placement=top><i class="icon icon-github"></i></a></li>
+        
+        <li><a href="http://weibo.com/cofess" target="_blank" title="Weibo" data-toggle=tooltip data-placement=top><i class="icon icon-weibo"></i></a></li>
+        
+        <li><a href="https://twitter.com/iwebued" target="_blank" title="Twitter" data-toggle=tooltip data-placement=top><i class="icon icon-twitter"></i></a></li>
+        
+        <li><a href="https://www.behance.net/cofess" target="_blank" title="Behance" data-toggle=tooltip data-placement=top><i class="icon icon-behance"></i></a></li>
+        
+        <li><a href="/atom.xml" target="_blank" title="Rss" data-toggle=tooltip data-placement=top><i class="icon icon-rss"></i></a></li>
+        
+    </ul>
+
+    <div class="copyright">
+    	
+        <div class="publishby">
+        	Theme by <a href="https://github.com/cofess" target="_blank"> cofess </a>base on <a href="https://github.com/cofess/hexo-theme-pure" target="_blank">pure</a>.
+        </div>
+    </div>
+</footer>
+  <script src="https://cdn.bootcss.com/jquery/1.12.4/jquery.min.js"></script>
+<script>
+window.jQuery || document.write('<script src="js/jquery.min.js"><\/script>')
+</script>
+<script src="/js/plugin.min.js"></script>
+<script src="/js/application.js"></script>
+  
+    
+    
+    
+        <script>
+(function (window) {
+    var INSIGHT_CONFIG = {
+        TRANSLATION: {
+            POSTS: '文章',
+            PAGES: '页面',
+            CATEGORIES: '分类',
+            TAGS: '标签',
+            UNTITLED: '(未命名)',
+        },
+        ROOT_URL: '/',
+        CONTENT_URL: '/content.json',
+    };
+    window.INSIGHT_CONFIG = INSIGHT_CONFIG;
+})(window);
+</script>
+<script src="/js/insight.js"></script>
+    
+    
+    
+        
+
+
+    
+    
+        
+    
+   <script src="//cdn1.lncld.net/static/js/3.0.4/av-min.js"></script>
+   <script src="//cdn.jsdelivr.net/npm/valine"></script>
+   <script type="text/javascript">
+    var GUEST = ['nick','mail','link'];
+     var meta = 'nick,mail,link';
+     meta = meta.split(',').filter(function (item) {
+       return GUEST.indexOf(item)>-1;
+     });
+     new Valine({
+         el: '#vcomments' ,
+         verify: false,
+         notify: false,
+         appId: '',
+         appKey: '',
+         placeholder: 'Just go go',
+         avatar:'mm',
+         meta:meta,
+         pageSize:'10' || 10,
+         visitor: false
+     });
+   </script>
+
+    
+
+    
+    
+
+
+
+</body>
+</html>
