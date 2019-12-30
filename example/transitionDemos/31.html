@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Document</title>
+  <style>
+    .test {
+      display: inline-block;
+      height: 100px;
+      width: 100px;
+      background-color: #00ff00;
+      transition: width 1s;
+      -webkit-transition: width 1s;
+      text-align: center;
+      font: 20px/100px "宋体";
+    }
+
+    .test:hover {
+      width: 300px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="test" id="test"></div>
+  <script>
+    var index = 0;
+    //兼容低版本safari、IOS、android
+    test.addEventListener("webkitTransitionEnd", myFunction);
+    // 标准语法
+    test.addEventListener("transitionend", myFunction);
+    function myFunction() {
+      index++;
+      this.innerHTML = index;
+      if (index == 1) {
+        test.removeEventListener("webkitTransitionEnd", myFunction);
+        test.removeEventListener("transitionend", myFunction);
+      }
+    }
+  </script>
+</body>
+
+</html>

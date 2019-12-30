@@ -1,0 +1,650 @@
+
+<!DOCTYPE HTML>
+<html lang="" >
+    <head>
+        <meta charset="UTF-8">
+        <meta content="text/html; charset=utf-8" http-equiv="Content-Type">
+        <title>过渡transition · GitBook</title>
+        <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+        <meta name="description" content="">
+        <meta name="generator" content="GitBook 3.2.3">
+        
+        
+        
+    
+    <link rel="stylesheet" href="../gitbook/style.css">
+
+    
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-highlight/website.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-search/search.css">
+                
+            
+                
+                <link rel="stylesheet" href="../gitbook/gitbook-plugin-fontsettings/website.css">
+                
+            
+        
+
+    
+
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+        
+    
+
+        
+    
+    
+    <meta name="HandheldFriendly" content="true"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black">
+    <link rel="apple-touch-icon-precomposed" sizes="152x152" href="../gitbook/images/apple-touch-icon-precomposed-152.png">
+    <link rel="shortcut icon" href="../gitbook/images/favicon.ico" type="image/x-icon">
+
+    
+    <link rel="next" href="../JavaScript/" />
+    
+    
+    <link rel="prev" href="Flex布局学习.html" />
+    
+
+    </head>
+    <body>
+        
+<div class="book">
+    <div class="book-summary">
+        
+            
+<div id="book-search-input" role="search">
+    <input type="text" placeholder="Type to search" />
+</div>
+
+            
+                <nav role="navigation">
+                
+
+
+<ul class="summary">
+    
+    
+
+    
+
+    
+        
+        
+    
+        <li class="chapter " data-level="1.1" data-path="../">
+            
+                <a href="../">
+            
+                    
+                    前言
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter " data-level="1.2" data-path="./">
+            
+                <a href="./">
+            
+                    
+                    CSS
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.2.1" data-path="Flex布局学习.html">
+            
+                <a href="Flex布局学习.html">
+            
+                    
+                    Flex布局
+            
+                </a>
+            
+
+            
+        </li>
+    
+        <li class="chapter active" data-level="1.2.2" data-path="深入理解CSS过渡transition.html">
+            
+                <a href="深入理解CSS过渡transition.html">
+            
+                    
+                    过渡transition
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+        <li class="chapter " data-level="1.3" data-path="../JavaScript/">
+            
+                <a href="../JavaScript/">
+            
+                    
+                    JavaScript
+            
+                </a>
+            
+
+            
+            <ul class="articles">
+                
+    
+        <li class="chapter " data-level="1.3.1" data-path="../JavaScript/JavaScript数据类型.html">
+            
+                <a href="../JavaScript/JavaScript数据类型.html">
+            
+                    
+                    JavaScript数据类型
+            
+                </a>
+            
+
+            
+        </li>
+    
+
+            </ul>
+            
+        </li>
+    
+
+    
+
+    <li class="divider"></li>
+
+    <li>
+        <a href="https://www.gitbook.com" target="blank" class="gitbook-link">
+            Published with GitBook
+        </a>
+    </li>
+</ul>
+
+
+                </nav>
+            
+        
+    </div>
+
+    <div class="book-body">
+        
+            <div class="body-inner">
+                
+                    
+
+<div class="book-header" role="navigation">
+    
+
+    <!-- Title -->
+    <h1>
+        <i class="fa fa-circle-o-notch fa-spin"></i>
+        <a href=".." >过渡transition</a>
+    </h1>
+</div>
+
+
+
+
+                    <div class="page-wrapper" tabindex="-1" role="main">
+                        <div class="page-inner">
+                            
+<div id="book-search-results">
+    <div class="search-noresults">
+    
+                                <section class="normal markdown-section">
+                                
+                                <h1 id="&#x8FC7;&#x6E21;transition">&#x8FC7;&#x6E21;transition</h1>
+<p>&#x6587;&#x7AE0;&#x642C;&#x8FD0;&#xFF1A;<a href="https://www.cnblogs.com/xiaohuochai/p/5347930.html" target="_blank">&#x6DF1;&#x5165;&#x7406;&#x89E3;CSS&#x8FC7;&#x6E21;transition - &#x5C0F;&#x706B;&#x67F4;&#x7684;&#x84DD;&#x8272;&#x7406;&#x60F3; - &#x535A;&#x5BA2;&#x56ED;</a>
+ <a href="https://fackin.github.io/example/transitionDemos/index.html" target="_blank">demos</a> </p>
+<h2 id="&#x5B9A;&#x4E49;">&#x5B9A;&#x4E49;</h2>
+<p>&#x8FC7;&#x6E21;<code>transition</code>&#x662F;&#x4E00;&#x4E2A;&#x590D;&#x5408;&#x5C5E;&#x6027;&#xFF0C;&#x5305;&#x62EC;<code>transition-property</code>&#x3001;<code>transition-duration</code>&#x3001;<code>transition-timing-function</code>&#x3001;<code>transition-delay</code>&#x8FD9;&#x56DB;&#x4E2A;&#x5B50;&#x5C5E;&#x6027;&#x3002;&#x901A;&#x8FC7;&#x8FD9;&#x56DB;&#x4E2A;&#x5B50;&#x5C5E;&#x6027;&#x7684;&#x914D;&#x5408;&#x6765;&#x5B8C;&#x6210;&#x4E00;&#x4E2A;&#x5B8C;&#x6574;&#x7684;&#x8FC7;&#x6E21;&#x6548;&#x679C;&#x3002;</p>
+<pre><code>transition-property: &#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#xFF08;&#x9ED8;&#x8BA4;all)
+transition-duration: &#x8FC7;&#x6E21;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF08;&#x9ED8;&#x8BA4;&#x503C;0s&#xFF09;
+transition-timing-function: &#x8FC7;&#x6E21;&#x51FD;&#x6570;&#xFF08;&#x9ED8;&#x8BA4;&#x503C;ease&#x51FD;&#x6570;&#xFF09;
+transition-delay: &#x8FC7;&#x6E21;&#x5EF6;&#x8FDF;&#x65F6;&#x95F4;&#xFF08;&#x9ED8;&#x8BA4;&#x503C;0s&#xFF09;
+</code></pre><p><strong>&#x6CE8;&#x610F;</strong> IE9-&#x4E0D;&#x652F;&#x6301;&#x8BE5;&#x5C5E;&#x6027;&#xFF0C;safari3.1-6&#x3001;IOS3.2-6.1&#x3001;android2.1-4.3&#x9700;&#x8981;&#x6DFB;&#x52A0;-webkit-&#x524D;&#x7F00;&#xFF1B;&#x800C;&#x5176;&#x4F59;&#x9AD8;&#x7248;&#x672C;&#x6D4F;&#x89C8;&#x5668;&#x652F;&#x6301;&#x6807;&#x51C6;&#x5199;&#x6CD5;</p>
+<pre><code>transition: &lt;transition-property&gt; || &lt;transition-duration&gt; || &lt;transition-timing-function&gt; || &lt;transition-delay&gt;
+</code></pre><p>&#x56DB;&#x4E2A;&#x5C5E;&#x6027;&#x4E2D;&#x53EA;&#x6709;<transition-duration>&#x662F;&#x5FC5;&#x586B;&#x503C;&#x4E14;&#x4E0D;&#x80FD;&#x4E3A;0&#x3002;&#x5176;&#x4E2D;&#xFF0C;<transition-duration>&#x548C;<transition-delay>&#x90FD;&#x662F;&#x65F6;&#x95F4;&#x3002;&#x5F53;&#x4E24;&#x4E2A;&#x65F6;&#x95F4;&#x540C;&#x65F6;&#x51FA;&#x73B0;&#x65F6;&#xFF0C;&#x7B2C;&#x4E00;&#x4E2A;&#x662F;<transition-duration>,&#x7B2C;&#x4E8C;&#x4E2A;&#x662F;<transition-delay>;&#x5F53;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#x65F6;&#x95F4;&#x65F6;&#xFF0C;&#x5B83;&#x662F;<transition-duration>&#xFF0C;&#x800C;<transition-delay>&#x4E3A;&#x9ED8;&#x8BA4;&#x503C;0&#x3002;</transition-delay></transition-duration></transition-delay></transition-duration></transition-delay></transition-duration></transition-duration></p>
+<p><strong>&#x6CE8;&#x610F;</strong>transition&#x7684;&#x56DB;&#x4E2A;&#x5B50;&#x5C5E;&#x6027;&#x4E4B;&#x95F4;&#x4E0D;&#x80FD;&#x7528;&#x9017;&#x53F7;&#x5206;&#x5F00;&#xFF0C;&#x53EA;&#x80FD;&#x7528;&#x7A7A;&#x683C;&#x3002;&#x56E0;&#x4E3A;&#x9017;&#x53F7;&#x9694;&#x5F00;&#x7684;&#x662F;&#x4EE3;&#x8868;&#x4E0D;&#x540C;&#x5C5E;&#x6027;&#xFF08;transition&#x5C5E;&#x6027;&#x652F;&#x6301;&#x591A;&#x503C;&#xFF09;&#xFF1B;&#x800C;&#x7A7A;&#x683C;&#x9694;&#x5F00;&#x4EE3;&#x8868;&#x4E0D;&#x540C;&#x5C5E;&#x6027;&#x7684;&#x56DB;&#x4E2A;&#x5173;&#x4E8E;&#x8FC7;&#x6E21;&#x7684;&#x5B50;&#x5C5E;&#x6027;&#x3002;</p>
+<h2 id="&#x8FC7;&#x6E21;&#x5C5E;&#x6027;">&#x8FC7;&#x6E21;&#x5C5E;&#x6027;</h2>
+<h3 id="transition-property"><code>transition-property</code></h3>
+<pre><code>&#x503C;&#xFF1A; none | all | &lt;transition-property&gt;[,&lt;transition-property&gt;]*
+&#x521D;&#x59CB;&#x503C;&#xFF1A; all
+&#x5E94;&#x7528;&#x4E8E;&#xFF1A; &#x6240;&#x6709;&#x5143;&#x7D20;
+&#x7EE7;&#x627F;&#x6027;&#xFF1A; &#x65E0;
+
+none: &#x6CA1;&#x6709;&#x6307;&#x5B9A;&#x4EFB;&#x4F55;&#x6837;&#x5F0F;
+all&#xFF1A; &#x9ED8;&#x8BA4;&#x503C;
+</code></pre><h3 id="&#x53EF;&#x8FC7;&#x6E21;&#x7684;&#x6837;&#x5F0F;">&#x53EF;&#x8FC7;&#x6E21;&#x7684;&#x6837;&#x5F0F;</h3>
+<p>&#x4E0D;&#x662F;&#x6240;&#x6709;&#x7684;CSS&#x6837;&#x5F0F;&#x503C;&#x90FD;&#x53EF;&#x4EE5;&#x8FC7;&#x6E21;&#xFF0C;&#x53EA;&#x6709;&#x5177;&#x6709;&#x4E2D;&#x95F4;&#x503C;&#x7684;&#x5C5E;&#x6027;&#x624D;&#x5177;&#x5907;&#x8FC7;&#x6E21;&#x6548;&#x679C;</p>
+<pre><code>Vstart = &#x5F00;&#x59CB;&#x503C;; Vend = &#x7ED3;&#x675F;&#x503C;; Vres = &#x4E2D;&#x95F4;&#x503C;; p = &#x8FC7;&#x6E21;&#x51FD;&#x6570;&#x7684;&#x8F93;&#x51FA;&#x503C;;
+Vres = (1-p) * Vstart + p * Vend;
+&#x5F53;Vres&#x5177;&#x6709;&#x6709;&#x6548;&#x503C;&#x65F6;&#xFF0C;&#x5219;&#x8BE5;CSS&#x6837;&#x5F0F;&#x53EF;&#x8FC7;&#x6E21;
+</code></pre><pre><code>&#x989C;&#x8272;: color background-color border-color outline-color
+&#x4F4D;&#x7F6E;: backround-position left right top bottom
+&#x957F;&#x5EA6;: 
+    [1]max-height min-height max-width min-width height width
+    [2]border-width margin padding outline-width outline-offset
+    [3]font-size line-height text-indent vertical-align  
+    [4]border-spacing letter-spacing word-spacing
+&#x6570;&#x5B57;: opacity visibility z-index font-weight zoom
+&#x7EC4;&#x5408;: text-shadow transform box-shadow clip
+&#x5176;&#x4ED6;: gradient
+</code></pre><h2 id="&#x8FC7;&#x6E21;&#x6301;&#x7EED;&#x65F6;&#x95F4;">&#x8FC7;&#x6E21;&#x6301;&#x7EED;&#x65F6;&#x95F4;</h2>
+<p>&#x5355;&#x4F4D;&#xFF1A;&#x79D2;s&#x6216;&#x6BEB;&#x79D2;ms</p>
+<h3 id="transition-duration"><code>transition-duration</code></h3>
+<p>&#x503C;: <time>[,<time>]<em>
+&#x521D;&#x59CB;&#x503C;: 0s
+&#x5E94;&#x7528;&#x4E8E;: &#x6240;&#x6709;&#x5143;&#x7D20;
+&#x7EE7;&#x627F;&#x6027;: &#x65E0;
+<em>*&#x6CE8;&#x610F;</em></em> &#x8BE5;&#x5C5E;&#x6027;&#x4E0D;&#x80FD;&#x4E3A;&#x8D1F;&#x503C;
+         &#x82E5;&#x8BE5;&#x5C5E;&#x6027;&#x4E3A;0s &#x5219;&#x4E3A;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x82E5;&#x4E3A;0 &#x5219;&#x4E3A;&#x65E0;&#x6548;&#x503C;&#x3002;&#x6240;&#x4EE5;&#x5FC5;&#x987B;&#x5E26;&#x5355;&#x4F4D;
+         &#x8BE5;&#x503C;&#x4E3A;&#x5355;&#x503C;&#x65F6;&#xFF0C;&#x5373;&#x6240;&#x6709;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x90FD;&#x5BF9;&#x5E94;&#x540C;&#x6837;&#x65F6;&#x95F4;&#xFF1B;&#x4E3A;&#x591A;&#x503C;&#x65F6;&#xFF0C;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x6309;&#x987A;&#x5E8F;&#x5BF9;&#x5E94;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x3002;</time></time></p>
+<h2 id="&#x8FC7;&#x6E21;&#x5EF6;&#x8FDF;&#x65F6;&#x95F4;">&#x8FC7;&#x6E21;&#x5EF6;&#x8FDF;&#x65F6;&#x95F4;</h2>
+<p>&#x5B9A;&#x4E49;&#x5143;&#x7D20;&#x5C5E;&#x6027;&#x5EF6;&#x8FDF;&#x591A;&#x5C11;&#x65F6;&#x95F4;&#x540E;&#x5F00;&#x59CB;&#x8FC7;&#x6E21;&#x6548;&#x679C;&#xFF0C;&#x8BE5;&#x5C5E;&#x6027;&#x7684;&#x5355;&#x4F4D;&#x662F;&#x79D2;s&#x6216;&#x6BEB;&#x79D2;ms</p>
+<h3 id="transition-delay"><code>transition-delay</code></h3>
+<p>&#x503C;&#xFF1A; <time>[,<time>]<em>
+&#x521D;&#x59CB;&#x503C;&#xFF1A; 0s
+&#x5E94;&#x7528;&#x4E8E;&#xFF1A; &#x6240;&#x6709;&#x5143;&#x7D20;
+&#x7EE7;&#x627F;&#x6027;&#xFF1A; &#x65E0;
+<em>*&#x6CE8;&#x610F;</em></em>1.&#x8BE5;&#x5C5E;&#x6027;&#x82E5;&#x4E3A;&#x8D1F;&#x503C;&#xFF0C;&#x65E0;&#x5EF6;&#x8FDF;&#x6548;&#x679C;&#xFF0C;&#x4F46;&#x8FC7;&#x6E21;&#x5143;&#x7D20;&#x7684;&#x8D77;&#x59CB;&#x503C;&#x5C06;&#x4ECE;0&#x53D8;&#x4E3A;&#x8BBE;&#x5B9A;&#x503C;&#xFF08;&#x8BBE;&#x5B9A;&#x503C;=&#x5EF6;&#x8FDF;&#x65F6;&#x95F4;+&#x6301;&#x7EED;&#x65F6;&#x95F4;&#xFF09;&#x3002;&#x82E5;&#x8BE5;&#x8BBE;&#x5B9A;&#x503C;&#x5C0F;&#x4E8E;&#x7B49;&#x4E8E;0&#xFF0C;&#x5219;&#x65E0;&#x8FC7;&#x6E21;&#x6548;&#x679C;&#xFF1B;&#x82E5;&#x8BE5;&#x8BBE;&#x5B9A;&#x503C;&#x5927;&#x4E8E;0&#xFF0C;&#x5219;&#x8FC7;&#x6E21;&#x5143;&#x7D20;&#x4ECE;&#x8BE5;&#x8BBE;&#x5B9A;&#x503C;&#x5F00;&#x59CB;&#x5B8C;&#x6210;&#x5269;&#x4F59;&#x7684;&#x8FC7;&#x6E21;&#x6548;&#x679C;
+        2.&#x82E5;&#x8BE5;&#x5C5E;&#x6027;&#x4E3A;0s&#x5219;&#x4E3A;&#x9ED8;&#x8BA4;&#x503C;&#xFF0C;&#x82E5;&#x4E3A;0&#x5219;&#x4E3A;&#x65E0;&#x6548;&#x503C;&#x3002;&#x6240;&#x4EE5;&#x5FC5;&#x987B;&#x5E26;&#x5355;&#x4F4D;
+        3.&#x8BE5;&#x503C;&#x4E3A;&#x5355;&#x503C;&#x65F6;&#xFF0C;&#x5373;&#x6240;&#x6709;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x90FD;&#x5BF9;&#x5E94;&#x540C;&#x6837;&#x65F6;&#x95F4;&#xFF1B;&#x8BE5;&#x503C;&#x4E3A;&#x591A;&#x503C;&#x65F6;&#xFF0C;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x6309;&#x7167;&#x987A;&#x5E8F;&#x5BF9;&#x5E94;&#x6301;&#x7EED;&#x65F6;&#x95F4;</time></time></p>
+<h2 id="&#x8FC7;&#x6E21;&#x65F6;&#x95F4;&#x51FD;&#x6570;">&#x8FC7;&#x6E21;&#x65F6;&#x95F4;&#x51FD;&#x6570;</h2>
+<p>&#x8FC7;&#x6E21;&#x65F6;&#x95F4;&#x51FD;&#x6570;&#x7528;&#x4E8E;&#x5B9A;&#x4E49;&#x5143;&#x7D20;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x968F;&#x65F6;&#x95F4;&#x53D8;&#x5316;&#x7684;&#x8FC7;&#x6E21;&#x901F;&#x5EA6;&#x53D8;&#x5316;&#x6548;&#x679C;</p>
+<h3 id="transition-timing-function"><code>transition-timing-function</code></h3>
+<p>&#x503C;&#xFF1A; <timing-function>[,<timing-function>]*
+&#x521D;&#x59CB;&#x503C;&#xFF1A; ease
+&#x5E94;&#x7528;&#x4E8E;&#xFF1A; &#x6240;&#x6709;&#x5143;&#x7D20;
+&#x7EE7;&#x627F;&#x6027;&#xFF1A; &#x65E0;</timing-function></timing-function></p>
+<h3 id="&#x53D6;&#x503C;">&#x53D6;&#x503C;</h3>
+<p>&#x8FC7;&#x6E21;&#x65F6;&#x95F4;&#x51FD;&#x6570;&#x5171;&#x4E09;&#x79CD;&#x53D6;&#x503C;&#xFF0C;&#x5206;&#x522B;&#x4E3A;&#x5173;&#x952E;&#x5B57;&#x3001;steps&#x51FD;&#x6570;&#x548C;bezier&#x51FD;&#x6570;</p>
+<h3 id="steps&#x51FD;&#x6570;">steps&#x51FD;&#x6570;</h3>
+<p>Steps&#x6B65;&#x8FDB;&#x51FD;&#x6570;&#x5C06;&#x8FC7;&#x6E21;&#x65F6;&#x95F4;&#x5212;&#x5206;&#x6210;&#x5927;&#x5C0F;&#x76F8;&#x7B49;&#x7684;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x6765;&#x8FD0;&#x884C;
+steps&#x51FD;&#x6570;&#x4E3A;</p>
+<pre><code>steps(&lt;integer&gt;[,start | end]?)
+
+&lt;integer&gt;:&#x7528;&#x6765;&#x5236;&#x5B9A;&#x95F4;&#x9694;&#x4E2A;&#x6570;&#xFF08;&#x8BE5;&#x503C;&#x53EA;&#x80FD;&#x662F;&#x6B63;&#x6574;&#x6570;&#xFF09;
+&#x7B2C;&#x4E8C;&#x4E2A;&#x53C2;&#x6570;&#xFF1A; &#x8BE5;&#x53C2;&#x6570;&#x53EF;&#x9009;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;end&#xFF0C;&#x8868;&#x793A;&#x5F00;&#x59CB;&#x503C;&#x4FDD;&#x6301;&#x4E00;&#x6B21;&#xFF1B;&#x82E5;&#x53C2;&#x6570;&#x4E3A;start&#xFF0C;&#x8868;&#x793A;&#x5F00;&#x59CB;&#x4E0D;&#x4FDD;&#x6301;
+</code></pre><p><img src="../Users/fackin/Documents/myblog/source/_posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3CSS%E8%BF%87%E6%B8%A1transition/006tNc79ly1g38sihe8w9j30u00ujwmf.jpg" alt=""></p>
+<h3 id="&#x8D1D;&#x585E;&#x5C14;&#x66F2;&#x7EBF;">&#x8D1D;&#x585E;&#x5C14;&#x66F2;&#x7EBF;</h3>
+<p>&#x8D1D;&#x585E;&#x5C14;&#x66F2;&#x7EBF;&#x901A;&#x8FC7;p0-p3&#x56DB;&#x4E2A;&#x63A7;&#x5236;&#x70B9;&#x6765;&#x63A7;&#x5236;&#xFF0C;&#x5176;&#x4E2D;p0&#x8868;&#x793A;(0,0)&#xFF0C;p3&#x8868;&#x793A;(1,1)&#x3002;&#x800C;<transition-timing-function>&#x5C31;&#x901A;&#x8FC7;&#x786E;&#x5B9A;p1(x1,y1)&#x548C;p2(x2,y2)&#x7684;&#x503C;&#x6765;&#x786E;&#x5B9A;&#x7684;</transition-timing-function></p>
+<p><img src="../Users/fackin/Documents/myblog/source/_posts/%E6%B7%B1%E5%85%A5%E7%90%86%E8%A7%A3CSS%E8%BF%87%E6%B8%A1transition/006tNc79ly1g38wu9s09xj30py02gjrj.jpg" alt=""></p>
+<pre><code class="lang-css"><span class="hljs-selector-tag">transition-timing-function</span>: <span class="hljs-selector-tag">cubic-bezier</span>(<span class="hljs-selector-tag">x1</span>,<span class="hljs-selector-tag">y1</span>,<span class="hljs-selector-tag">x2</span>,<span class="hljs-selector-tag">y2</span>);
+</code></pre>
+<p><strong>&#x6CE8;&#x610F;</strong>  x1y1x2y2&#x90FD;&#x662F;0&#x5230;1&#x7684;&#x503C;&#xFF08;&#x5305;&#x62EC;0&#x548C;1&#xFF09;</p>
+<h3 id="&#x5173;&#x952E;&#x5B57;">&#x5173;&#x952E;&#x5B57;</h3>
+<p>&#x5173;&#x952E;&#x5B57;&#x5176;&#x5B9E;&#x662F;bezier&#x51FD;&#x6570;&#x6216;steps&#x51FD;&#x6570;&#x7684;&#x7279;&#x6B8A;&#x503C;</p>
+<pre><code>ease: &#x5F00;&#x59CB;&#x548C;&#x7ED3;&#x675F;&#x6162;&#xFF0C;&#x4E2D;&#x95F4;&#x5FEB;&#x3002;&#x76F8;&#x5F53;&#x4E8E;cubic-bezier(0.25,0.1,0.25,1)
+linear: &#x5300;&#x901F;&#x3002;&#x76F8;&#x5F53;&#x4E8E;cubic-bezier(0,0,1,1)
+ease-in: &#x5F00;&#x59CB;&#x6162;&#x3002;&#x76F8;&#x5F53;&#x4E8E;cubic-bezier(0.42,0,1,1)
+ease-out: &#x7ED3;&#x675F;&#x6162;&#x3002;&#x76F8;&#x5F53;&#x4E8E;cubic-bezier(0,0,0.58,1)
+ease-in-out: &#x548C;ease&#x7C7B;&#x4F3C;&#xFF0C;&#x4F46;&#x6BD4;ease&#x5E45;&#x5EA6;&#x5927;&#x3002;&#x76F8;&#x5F53;&#x4E8E;cubic-bezier(0.42,0,0.58,1)
+step-start: &#x76F4;&#x63A5;&#x4F4D;&#x4E8E;&#x7ED3;&#x675F;&#x5904;&#x3002;&#x76F8;&#x5F53;&#x4E8E;steps(1,start)
+Step-end: &#x4F4D;&#x4E8E;&#x5F00;&#x59CB;&#x5904;&#x7ECF;&#x8FC7;&#x65F6;&#x95F4;&#x95F4;&#x9694;&#x540E;&#x7ED3;&#x675F;&#x3002;&#x76F8;&#x5F53;&#x4E8E;steps(1,end)
+</code></pre><h2 id="&#x591A;&#x503C;">&#x591A;&#x503C;</h2>
+<p>transition&#x7684;&#x591A;&#x4E2A;&#x5C5E;&#x6027;&#x503C;&#x7528;&#x9017;&#x53F7;&#x5206;&#x9694;&#x5F00;&#x8868;&#x793A;&#x53EF;&#x4EE5;&#x540C;&#x65F6;&#x4E3A;&#x591A;&#x4E2A;&#x503C;&#x8BBE;&#x7F6E;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;</p>
+<pre><code class="lang-css">transition: &lt;single-transition&gt;[,&lt;single-transition&gt;]*
+
+&lt;single-transition&gt;: &lt;transition-property&gt; || &lt;transition duration&gt; || &lt;transition-timing-function&gt; || &lt;transition-delay&gt;
+
+// property&#x4E3A;all,timing-function&#x4E3A;linear,delay&#x4E3A;0s,duration&#x4E3A;0s.&#x8868;&#x793A;&#x65E0;&#x8FC7;&#x6E21;&#x884C;&#x4E3A;
+transition: 0s;
+</code></pre>
+<p>1&#xFF09;&#x82E5;&#x4E0D;&#x540C;&#x7684;transition-property&#x503C;&#xFF0C;&#x5BF9;&#x5E94;&#x7684;transition-delay | transition-timing-function | transition-duration&#x7684;&#x5C5E;&#x6027;&#x503C;&#x90FD;&#x76F8;&#x540C;&#x65F6;&#xFF0C;&#x5219;&#x5BF9;&#x5E94;&#x7684;&#x8FD9;&#x4E9B;&#x5C5E;&#x6027;&#x8BBE;&#x7F6E;&#x4E00;&#x4E2A;&#x5373;&#x53EF;</p>
+<pre><code class="lang-css"><span class="hljs-selector-id">#test1</span>{
+    <span class="hljs-attribute">transition-property</span>: width,background;
+    <span class="hljs-attribute">transition-delay</span>: <span class="hljs-number">200ms</span>;
+    <span class="hljs-attribute">transition-timing-function</span>: linear;
+    <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">2s</span>;
+}
+<span class="hljs-comment">/*&#x7C7B;&#x4F3C;&#x4E8E;*/</span>
+<span class="hljs-selector-id">#test2</span>{
+    <span class="hljs-attribute">transition</span>: width <span class="hljs-number">2s</span> linear <span class="hljs-number">200ms</span>,background <span class="hljs-number">2s</span> linear <span class="hljs-number">200ms</span>;
+}
+</code></pre>
+<p>2) &#x5F53;transition-property &#x503C;&#x7684;&#x4E2A;&#x6570;&#x591A;&#x4E8E;&#x5BF9;&#x5E94;&#x7684;transition-delay | transition-timing-function | transition-duration&#x7684;&#x5C5E;&#x6027;&#x503C;&#xFF08;&#x5C5E;&#x6027;&#x503C;&#x7684;&#x4E2A;&#x6570;&#x5927;&#x4E8E;1&#x4E2A;&#xFF09;&#x65F6;&#xFF0C;&#x5C06;&#x6309;&#x987A;&#x5E8F;&#x5F00;&#x59CB;&#x53D6;&#x503C;</p>
+<pre><code class="lang-css"><span class="hljs-selector-id">#test1</span>{
+    <span class="hljs-attribute">transition-property</span>: width,background,opacity;
+    <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">2s</span>,<span class="hljs-number">500ms</span>;
+    <span class="hljs-attribute">transition-timing-function</span>: linear,ease;
+    <span class="hljs-attribute">transition-delay</span>: <span class="hljs-number">200ms</span>,<span class="hljs-number">0s</span>;
+}
+<span class="hljs-comment">/*&#x7C7B;&#x4F3C;&#x4E8E;*/</span>
+<span class="hljs-selector-id">#test2</span>{
+    <span class="hljs-attribute">transition</span>: width <span class="hljs-number">2s</span> linear <span class="hljs-number">200ms</span>,background <span class="hljs-number">500ms</span> ease <span class="hljs-number">0s</span>,opacity <span class="hljs-number">2s</span> linear <span class="hljs-number">200ms</span>;
+}
+</code></pre>
+<p>3)&#x5F53;transition-property &#x503C;&#x7684;&#x4E2A;&#x6570;&#x5C11;&#x4E8E;&#x5BF9;&#x5E94;&#x7684;transition-delay | transition-timing-function | transition-duration&#x7684;&#x5C5E;&#x6027;&#x503C;&#x4E2A;&#x6570;&#x65F6;&#xFF0C;&#x591A;&#x4F59;&#x7684;&#x5C5E;&#x6027;&#x503C;&#x5C06;&#x65E0;&#x6548;</p>
+<pre><code class="lang-css"><span class="hljs-selector-id">#test1</span>{
+    <span class="hljs-attribute">transition-property</span>: width;
+    <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">2s</span>,<span class="hljs-number">500ms</span>;
+    <span class="hljs-attribute">transition-timing-function</span>: linear,ease;
+    <span class="hljs-attribute">transition-delay</span>: <span class="hljs-number">200ms</span>,<span class="hljs-number">0s</span>;
+}
+<span class="hljs-comment">/*&#x7C7B;&#x4F3C;&#x4E8E;*/</span>
+<span class="hljs-selector-id">#test2</span>{
+    <span class="hljs-attribute">transition</span>: width <span class="hljs-number">2s</span> linear <span class="hljs-number">200ms</span>;
+}
+</code></pre>
+<p>4) &#x5F53;transition-property&#x7684;&#x503C;&#x4E2D;&#x51FA;&#x73B0;&#x4E00;&#x4E2A;&#x65E0;&#x6548;&#x503C;&#xFF0C;&#x5B83;&#x4F9D;&#x7136;&#x6309;&#x987A;&#x5E8F;&#x5BF9;&#x5E94;transition&#x7684;&#x5176;&#x4ED6;&#x5C5E;&#x6027;&#x503C;&#xFF08;&#x5176;&#x4ED6;&#x5C5E;&#x6027;&#x51FA;&#x73B0;&#x65E0;&#x6548;&#x503C;&#xFF0C;&#x5904;&#x7406;&#x60C5;&#x51B5;&#x4E5F;&#x7C7B;&#x4F3C;&#xFF09;</p>
+<pre><code class="lang-css"><span class="hljs-selector-id">#test1</span>{
+    <span class="hljs-attribute">transition-property</span>: width,wuxiao,background;
+    <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">2s</span>,<span class="hljs-number">500ms</span>;
+    <span class="hljs-attribute">transition-timing-function</span>: linear,ease;
+    <span class="hljs-attribute">transition-delay</span>: <span class="hljs-number">200ms</span>,<span class="hljs-number">0s</span>;
+}
+<span class="hljs-comment">/*&#x7C7B;&#x4F3C;&#x4E8E;*/</span>
+<span class="hljs-selector-id">#test2</span>{
+    <span class="hljs-attribute">transition</span>: width <span class="hljs-number">2s</span> linear <span class="hljs-number">200ms</span>,background <span class="hljs-number">2s</span> linear <span class="hljs-number">200ms</span>;
+}
+</code></pre>
+<p>5) &#x5F53;transition-property&#x7684;&#x503C;&#x4E2D;&#xFF0C;&#x6709;&#x4E9B;&#x503C;&#x91CD;&#x590D;&#x51FA;&#x73B0;&#x591A;&#x6B21;&#xFF0C;&#x5219;&#x4EE5;&#x6700;&#x540E;&#x51FA;&#x73B0;&#x7684;&#x503C;&#x4E3A;&#x51C6;&#xFF0C;&#x524D;&#x9762;&#x6240;&#x6709;&#x51FA;&#x73B0;&#x7684;&#x503C;&#x90FD;&#x88AB;&#x8BA4;&#x5B9A;&#x4E3A;&#x65E0;&#x6548;&#x503C;&#xFF0C;&#x4F46;&#x4F9D;&#x7136;&#x6309;&#x987A;&#x5E8F;&#x5BF9;&#x5E94;transition&#x7684;&#x5176;&#x4ED6;&#x5C5E;&#x6027;&#x503C;</p>
+<pre><code class="lang-css"><span class="hljs-selector-id">#test1</span>{
+    <span class="hljs-attribute">transition-property</span>: width,width,background;
+    <span class="hljs-attribute">transition-duration</span>: <span class="hljs-number">2s</span>,<span class="hljs-number">500ms</span>;
+    <span class="hljs-attribute">transition-timing-function</span>: linear,ease;
+    <span class="hljs-attribute">transition-delay</span>: <span class="hljs-number">200ms</span>,<span class="hljs-number">0s</span>;
+}
+<span class="hljs-comment">/*&#x7C7B;&#x4F3C;&#x4E8E;*/</span>
+<span class="hljs-selector-id">#test2</span>{
+    <span class="hljs-attribute">transition</span>: width <span class="hljs-number">500ms</span> ease <span class="hljs-number">0s</span>,background <span class="hljs-number">2s</span> linear <span class="hljs-number">200ms</span>;
+}
+</code></pre>
+<h2 id="&#x8FC7;&#x6E21;&#x9636;&#x6BB5;">&#x8FC7;&#x6E21;&#x9636;&#x6BB5;</h2>
+<p>1&#xFF09;&#x8FC7;&#x6E21;&#x5F00;&#x59CB;&#x65F6;&#x95F4;=&#x6837;&#x5F0F;&#x6539;&#x53D8;&#x7684;&#x65F6;&#x523B;+&#x8FC7;&#x6E21;&#x5EF6;&#x8FDF;&#x65F6;&#x95F4;&#xFF1B;&#x800C;&#x8FC7;&#x6E21;&#x7ED3;&#x675F;&#x65F6;&#x95F4;=&#x8FC7;&#x6E21;&#x5F00;&#x59CB;&#x65F6;&#x95F4;+&#x8FC7;&#x6E21;&#x6301;&#x7EED;&#x65F6;&#x95F4;
+2&#xFF09;&#x8FC7;&#x6E21;&#x8D77;&#x59CB;&#x503C;=&#x8FC7;&#x6E21;&#x524D;&#x7684;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x503C;&#xFF1B;&#x8FC7;&#x6E21;&#x7ED3;&#x675F;&#x503C;=&#x8FC7;&#x6E21;&#x5B8C;&#x6210;&#x540E;&#x7684;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x503C;
+3&#xFF09;&#x8FC7;&#x6E21;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;&#xFF1A;&#x524D;&#x8FDB;&#xFF08;forward&#xFF09;&#x548C;&#x53CD;&#x5411;&#xFF08;reverse&#xFF09;&#x3002;&#x82E5;&#x524D;&#x8FDB;&#x9636;&#x6BB5;&#x8FDB;&#x884C;&#x4E00;&#x6BB5;&#x65F6;&#x95F4;&#x540E;&#x8FDB;&#x5165;&#x53CD;&#x54CD;&#x9636;&#x6BB5;&#xFF0C;&#x5219;&#x65B9;&#x5411;&#x9636;&#x6BB5;&#x7684;&#x521D;&#x59CB;&#x503C;&#x65F6;&#x524D;&#x8FDB;&#x9636;&#x6BB5;&#x7ED3;&#x675F;&#x65F6;&#x7684;&#x77AC;&#x95F4;&#x503C;
+4&#xFF09;&#x4EE5;hover&#x4E3A;&#x4F8B;&#xFF0C;&#x82E5;&#x5728;&#x5143;&#x7D20;&#x975E;hover&#x6001;&#x65F6;&#x8BBE;&#x7F6E;transition&#xFF0C;&#x76F8;&#x5F53;&#x4E8E;&#x8BBE;&#x7F6E;&#x7684;&#x53CD;&#x5411;&#x72B6;&#x6001;&#x3002;&#x800C;&#x524D;&#x8FDB;&#x548C;&#x53CD;&#x5411;&#x662F;&#x4E00;&#x81F4;&#x7684;&#x3002;&#x800C;&#x5982;&#x679C;&#x5728;&#x5143;&#x7D20;hover&#x6001;&#x8BBE;&#x7F6E;transition&#xFF0C;&#x5219;&#x524D;&#x8FDB;&#x72B6;&#x6001;&#x4EE5;hover&#x6001;&#x8BBE;&#x7F6E;&#x7684;&#x4E3A;&#x51C6;&#xFF0C;&#x800C;&#x53CD;&#x5411;&#x72B6;&#x6001;&#x4EE5;&#x975E;hover&#x6001;&#x8BBE;&#x7F6E;&#x7684;&#x4E3A;&#x51C6;</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.test</span>{
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+    <span class="hljs-attribute">transition</span>: <span class="hljs-number">3s</span>;
+}    
+<span class="hljs-selector-class">.test</span><span class="hljs-selector-pseudo">:hover</span>{
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;
+    <span class="hljs-attribute">transition</span>: <span class="hljs-number">500ms</span>;
+}
+</code></pre>
+<p>5&#xFF09;&#x5982;&#x679C;&#x5B50;&#x5143;&#x7D20;&#x548C;&#x7236;&#x5143;&#x7D20;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x90FD;&#x4E00;&#x81F4;&#x3002;&#x82E5;&#x89E6;&#x53D1;&#x5B50;&#x5143;&#x7D20;&#x8FC7;&#x6E21;&#x65F6;&#xFF0C;&#x7236;&#x5143;&#x7D20;&#x6B63;&#x5728;&#x8FC7;&#x6E21;&#xFF0C;&#x5219;&#x5C06;&#x7236;&#x5143;&#x7D20;&#x8FC7;&#x6E21;&#x7684;&#x4E2D;&#x95F4;&#x6001;&#x7684;&#x503C;&#x4F5C;&#x4E3A;&#x5B50;&#x5143;&#x7D20;&#x8FC7;&#x6E21;&#x7684;&#x521D;&#x59CB;&#x503C;</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.box</span><span class="hljs-selector-pseudo">:hover</span>{
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">50px</span>;
+}
+<span class="hljs-selector-class">.test</span><span class="hljs-selector-pseudo">:hover</span>{
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">30px</span>;
+}
+</code></pre>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;box&quot;</span>&gt;</span>
+    <span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">class</span>=<span class="hljs-string">&quot;test&quot;</span>&gt;</span>test<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+</code></pre>
+<p>6&#xFF09;&#x82E5;&#x8FC7;&#x6E21;&#x8D77;&#x59CB;&#x503C;&#x6216;&#x8FC7;&#x6E21;&#x5F00;&#x59CB;&#x503C;&#x4E3A;auto&#xFF0C;&#x5219;&#x6D4F;&#x89C8;&#x5668;&#x4E0D;&#x4F1A;&#x81EA;&#x5DF1;&#x8BA1;&#x7B97;&#x6210;&#x5177;&#x4F53;&#x6570;&#x5B57;&#x503C;&#xFF0C;&#x800C;&#x662F;&#x4E0D;&#x53D1;&#x751F;&#x8FC7;&#x6E21;&#x6548;&#x679C;&#x3002;&#x6240;&#x4EE5;&#x8981;&#x8FC7;&#x6E21;&#x67D0;&#x4E9B;&#x5C5E;&#x6027;&#xFF0C;&#x9996;&#x5148;&#x9700;&#x8981;&#x5C06;&#x5176;&#x91CD;&#x7F6E;&#x6210;&#x5177;&#x4F53;&#x6570;&#x5B57;&#x503C;
+<strong>&#x6CE8;&#x610F;</strong> &#x4F4E;&#x7248;&#x672C;webkit&#x5185;&#x6838;&#x6D4F;&#x89C8;&#x5668;&#x5B58;&#x5728;bug&#xFF0C;&#x4F1A;&#x4EA7;&#x751F;&#x53CD;&#x5411;&#x7684;&#x8FC7;&#x6E21;&#x6548;&#x679C;</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.test</span>{
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+    <span class="hljs-attribute">-webkit-transition</span>: width <span class="hljs-number">2s</span>;
+    <span class="hljs-attribute">transition</span>:width <span class="hljs-number">2s</span>;
+}    
+<span class="hljs-selector-class">.test</span><span class="hljs-selector-pseudo">:hover</span>{
+    <span class="hljs-attribute">width</span>:auto;
+}
+</code></pre>
+<p>7&#xFF09;&#x9690;&#x5F0F;&#x8FC7;&#x6E21;&#x662F;&#x6307;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x6539;&#x53D8;&#x5F15;&#x8D77;&#x53E6;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x6539;&#x53D8;&#x3002;&#x5982;border-width&#x662F;1em&#xFF0C;&#x5219;font-size&#x6539;&#x53D8;&#x65F6;&#xFF0C;border-width&#x4E5F;&#x4F1A;&#x76F8;&#x5E94;&#x7684;&#x6539;&#x53D8;&#x3002;<strong>firefox&#x548C;IE&#x6D4F;&#x89C8;&#x5668;&#x652F;&#x6301;&#x9690;&#x5F0F;&#x8FC7;&#x6E21;&#x3002;&#x800C;webkit&#x5185;&#x6838;&#x6D4F;&#x89C8;&#x5668;&#x4E0D;&#x652F;&#x6301;&#x9690;&#x5F0F;&#x8FC7;&#x6E21;&#x3002;</strong></p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.test</span>{
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid black;
+    <span class="hljs-attribute">-webkit-transition</span>: font-size <span class="hljs-number">2s</span>;
+    <span class="hljs-attribute">transition</span>:font-size <span class="hljs-number">2s</span>;
+    <span class="hljs-attribute">font</span>: <span class="hljs-number">20px</span>/<span class="hljs-number">100px</span> <span class="hljs-string">&quot;&#x5B8B;&#x4F53;&quot;</span>;
+}    
+<span class="hljs-selector-class">.test</span><span class="hljs-selector-pseudo">:hover</span>{
+    <span class="hljs-attribute">font-size</span>: <span class="hljs-number">40px</span>;
+    <span class="hljs-attribute">border-right-width</span>: <span class="hljs-number">1em</span>;
+}
+</code></pre>
+<h2 id="&#x89E6;&#x53D1;&#x65B9;&#x5F0F;">&#x89E6;&#x53D1;&#x65B9;&#x5F0F;</h2>
+<p>&#x4E00;&#x822C;&#x800C;&#x8A00;&#xFF0C;&#x8FC7;&#x6E21;transition&#x7684;&#x89E6;&#x53D1;&#x6709;&#x4E09;&#x79CD;&#x65B9;&#x5F0F;&#xFF0C;&#x5206;&#x522B;&#x662F;&#x4F2A;&#x7C7B;&#x89E6;&#x53D1;&#x3001;&#x5A92;&#x4F53;&#x67E5;&#x8BE2;&#x89E6;&#x53D1;&#x548C;javascript&#x89E6;&#x53D1;&#x3002;&#x5176;&#x4E2D;&#x5E38;&#x7528;&#x7684;&#x4F2A;&#x7C7B;&#x89E6;&#x53D1;&#x5305;&#x62EC;:hover&#x3001;:focus&#x3001;:active&#x7B49;
+1&#xFF09;hover
+&#x9F20;&#x6807;&#x60AC;&#x505C;&#x89E6;&#x53D1;
+2&#xFF09;active
+&#x7528;&#x6237;&#x5355;&#x51FB;&#x5143;&#x7D20;&#x5E76;&#x6309;&#x4F4F;&#x9F20;&#x6807;&#x65F6;&#x89E6;&#x53D1;
+3&#xFF09;focus
+&#x83B7;&#x5F97;&#x7126;&#x70B9;&#x65F6;&#x89E6;&#x53D1;
+4&#xFF09;@media&#x89E6;&#x53D1;
+&#x7B26;&#x5408;&#x5A92;&#x4F53;&#x67E5;&#x8BE2;&#x6761;&#x4EF6;&#x65F6;&#x89E6;&#x53D1;</p>
+<pre><code class="lang-css"><span class="hljs-comment">/* &#x628A;&#x6D4F;&#x89C8;&#x5668;&#x7684;&#x5BBD;&#x5EA6;&#x62D6;&#x52A8;&#x5230;&#x5C0F;&#x4E8E;1000px&#x65F6;&#x89E6;&#x53D1; */</span>
+@<span class="hljs-keyword">media</span> (max-width: <span class="hljs-number">1000px</span>){
+    <span class="hljs-selector-class">.test</span>{
+        <span class="hljs-attribute">width</span>: <span class="hljs-number">500px</span>;
+    }
+}
+</code></pre>
+<p>5&#xFF09;&#x70B9;&#x51FB;&#x4E8B;&#x4EF6;
+&#x7528;&#x6237;&#x70B9;&#x51FB;&#x5143;&#x7D20;&#x65F6;&#x89E6;&#x53D1;</p>
+<pre><code class="lang-javascript">test.onclick = <span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+    test.style.width = <span class="hljs-string">&apos;300px&apos;</span>;
+    setTimeout(<span class="hljs-function"><span class="hljs-keyword">function</span>(<span class="hljs-params"></span>)</span>{
+        test.style.width = <span class="hljs-string">&apos;100px&apos;</span>;
+    },<span class="hljs-number">3000</span>);
+}
+</code></pre>
+<h2 id="api">API</h2>
+<p>&#x5173;&#x4E8E;&#x8FC7;&#x6E21;transition&#x591A;&#x4E8B;&#x4EF6;&#x53EA;&#x6709;&#x4E00;&#x4E2A;&#xFF0C;&#x662F;transitionend&#x4E8B;&#x4EF6;&#xFF0C;&#x5B83;&#x53D1;&#x751F;&#x5728;&#x8FC7;&#x6E21;&#x4E8B;&#x4EF6;&#x5B8C;&#x6210;&#x540E;
+<strong>&#x6CE8;&#x610F;</strong>safari2.1-6&#x3001;ISO3.2-6.1&#x3001;android2.1-4.3&#x9700;&#x8981;&#x4F7F;&#x7528;webkitTransitionEnd&#x4E8B;&#x4EF6;</p>
+<h3 id="&#x5C5E;&#x6027;">&#x5C5E;&#x6027;</h3>
+<p>transitionEnd&#x7684;&#x4E8B;&#x4EF6;&#x5BF9;&#x8C61;&#x5177;&#x6709;&#x4EE5;&#x4E0B;3&#x4E2A;&#x79C1;&#x6709;&#x5C5E;&#x6027;
+propertyName: &#x53D1;&#x751F;transition&#x6548;&#x679C;&#x7684;CSS&#x5C5E;&#x6027;&#x540D;
+elapsedTime: &#x4EE3;&#x8868;&#x53D1;&#x751F;&#x5B9E;&#x9645;&#x6548;&#x679C;&#x7684;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x3002;&#x82E5;&#x5B8C;&#x6574;&#x8FDB;&#x884C;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x5B8C;&#x6574;&#x65F6;&#x95F4;&#xFF1B;&#x82E5;&#x4E2D;&#x9014;&#x4E2D;&#x65AD;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x5B9E;&#x9645;&#x65F6;&#x95F4;
+<strong>&#x6CE8;&#x610F;</strong>&#x8BE5;&#x5C5E;&#x6027;&#x5177;&#x6709;&#x517C;&#x5BB9;&#x6027;&#x95EE;&#x9898;&#xFF0C;chrome&#x8FD4;&#x56DE;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x52A0;&#x5EF6;&#x8FDF;&#x65F6;&#x95F4;&#xFF0C;&#x800C;&#x5176;&#x4ED6;&#x6D4F;&#x89C8;&#x5668;&#x53EA;&#x8FD4;&#x56DE;&#x6301;&#x7EED;&#x65F6;&#x95F4;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-id">#test</span>{<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">background-color</span>: pink;
+    <span class="hljs-attribute">transition</span>: width <span class="hljs-number">1.5s</span> <span class="hljs-number">0.5s</span>;}
+<span class="hljs-selector-id">#test</span><span class="hljs-selector-pseudo">:hover</span>{<span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;test&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="actionscript">
+test.addEventListener(<span class="hljs-string">&quot;transitionend&quot;</span>, myFunction);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span><span class="hljs-params">(e)</span></span>{
+    e = e || event;
+    test.innerHTML = <span class="hljs-string">&apos;propertyName:&apos;</span> + e.propertyName + <span class="hljs-string">&apos;; elapsedTime:&apos;</span> + e.elapsedTime + <span class="hljs-string">&apos;; pseudoElement:&apos;</span> + e.pseudoElement;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<p>pseudoElement: &#x5982;&#x679C;transition&#x6548;&#x679C;&#x53D1;&#x751F;&#x5728;&#x4F2A;&#x5143;&#x7D20;&#xFF0C;&#x4F1A;&#x8FD4;&#x56DE;&#x8BE5;&#x4F2A;&#x5143;&#x7D20;&#x7684;&#x540D;&#x79F0;&#xFF0C;&#x4EE5;&#x201C;::&#x201D;&#x5F00;&#x5934;&#x3002;&#x5982;&#x679C;&#x4E0D;&#x53D1;&#x751F;&#x5728;&#x4F2A;&#x5143;&#x7D20;&#x4E0A;&#xFF0C;&#x5219;&#x8FD4;&#x56DE;&#x4E00;&#x4E2A;&#x7A7A;&#x5B57;&#x7B26;&#x4E32;
+<strong>&#x6CE8;&#x610F;</strong> &#x82E5;transition&#x6548;&#x679C;&#x53D1;&#x751F;&#x5728;&#x4F2A;&#x5143;&#x7D20;&#x4E0A;&#xFF0C;IE&#x6D4F;&#x89C8;&#x5668;&#x5C06;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;transitionEnd&#x4E8B;&#x4EF6;</p>
+<pre><code class="lang-html"><span class="hljs-tag">&lt;<span class="hljs-name">style</span>&gt;</span><span class="css">
+<span class="hljs-selector-id">#test</span>{<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">position</span>: relative;<span class="hljs-attribute">background-color</span>: lightblue;}
+<span class="hljs-selector-id">#test</span><span class="hljs-selector-pseudo">:before</span>{<span class="hljs-attribute">content</span>:<span class="hljs-string">&apos;&#x6211;&#x662F;&#x4F2A;&#x5143;&#x7D20;&apos;</span>;<span class="hljs-attribute">position</span>: absolute;<span class="hljs-attribute">height</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;<span class="hljs-attribute">background-color</span>: pink;
+    <span class="hljs-attribute">left</span>:<span class="hljs-number">200px</span>;}
+<span class="hljs-selector-id">#test</span><span class="hljs-selector-pseudo">:hover</span><span class="hljs-selector-pseudo">:before</span>{<span class="hljs-attribute">width</span>: <span class="hljs-number">200px</span>;<span class="hljs-attribute">transition</span>: width <span class="hljs-number">1.5s</span> <span class="hljs-number">0.5s</span>;}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">style</span>&gt;</span>
+
+<span class="hljs-tag">&lt;<span class="hljs-name">div</span> <span class="hljs-attr">id</span>=<span class="hljs-string">&quot;test&quot;</span>&gt;</span><span class="hljs-tag">&lt;/<span class="hljs-name">div</span>&gt;</span>
+<span class="hljs-tag">&lt;<span class="hljs-name">script</span>&gt;</span><span class="javascript">
+test.addEventListener(<span class="hljs-string">&quot;transitionend&quot;</span>, myFunction);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params">e</span>)</span>{
+    <span class="hljs-built_in">console</span>.log(event)
+    e = e || event;
+    test.innerHTML = <span class="hljs-string">&apos;propertyName:&apos;</span> + e.propertyName + <span class="hljs-string">&apos;; elapsedTime:&apos;</span> + e.elapsedTime + <span class="hljs-string">&apos;; pseudoElement:&apos;</span> + e.pseudoElement;
+}
+</span><span class="hljs-tag">&lt;/<span class="hljs-name">script</span>&gt;</span>
+</code></pre>
+<h3 id="&#x6CE8;&#x610F;&#x4E8B;&#x9879;">&#x6CE8;&#x610F;&#x4E8B;&#x9879;</h3>
+<p>1&#xFF09;&#x8FC7;&#x6E21;&#x5206;&#x4E3A;&#x4E24;&#x4E2A;&#x9636;&#x6BB5;&#xFF1A;&#x524D;&#x8FDB;&#x9636;&#x6BB5;&#x548C;&#x53CD;&#x5411;&#x9636;&#x6BB5;&#x3002;transitionend&#x4E8B;&#x4EF6;&#x5728;&#x524D;&#x8FDB;&#x9636;&#x6BB5;&#x7ED3;&#x675F;&#x65F6;&#x4F1A;&#x89E6;&#x53D1;&#xFF0C;&#x5728;&#x53CD;&#x5411;&#x9636;&#x6BB5;&#x7ED3;&#x675F;&#x65F6;&#x4E5F;&#x4F1A;&#x89E6;&#x53D1;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> index = <span class="hljs-number">0</span>;
+<span class="hljs-comment">//&#x517C;&#x5BB9;&#x4F4E;&#x7248;&#x672C;safari&#x3001;IOS&#x3001;android</span>
+test.addEventListener(<span class="hljs-string">&quot;webkitTransitionEnd&quot;</span>, myFunction);
+<span class="hljs-comment">// &#x6807;&#x51C6;&#x8BED;&#x6CD5;</span>
+test.addEventListener(<span class="hljs-string">&quot;transitionend&quot;</span>, myFunction);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"></span>) </span>{
+    index++;
+    <span class="hljs-keyword">this</span>.innerHTML = index;
+}
+</code></pre>
+<p>2&#xFF09;&#x8FC7;&#x6E21;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;&#x7684;&#x6B21;&#x6570;&#x4E0E;transition-property&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x7684;&#x4E2A;&#x6570;&#x6709;&#x5173;&#x3002;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x6709;&#x51E0;&#x4E2A;&#x5C31;&#x4F1A;&#x89E6;&#x53D1;&#x51E0;&#x6B21;</p>
+<pre><code class="lang-css"><span class="hljs-selector-tag">transition</span>: <span class="hljs-selector-tag">width</span> 1<span class="hljs-selector-tag">s</span>,<span class="hljs-selector-tag">background-color</span> 1<span class="hljs-selector-tag">s</span>;
+<span class="hljs-selector-tag">-webkit-transition</span>: <span class="hljs-selector-tag">width</span> 1<span class="hljs-selector-tag">s</span>,<span class="hljs-selector-tag">background-color</span> 1<span class="hljs-selector-tag">s</span>;
+</code></pre>
+<p>3&#xFF09;&#x5982;&#x679C;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x662F;&#x590D;&#x5408;&#x5C5E;&#x6027;&#xFF0C;&#x5982;border-width&#x76F8;&#x5F53;&#x4E8E;&#x662F;border-top-width&#x3001;border-bottom-width&#x3001;border-left-eidth&#x548C;border-right-width&#x8FD9;&#x56DB;&#x4E2A;&#x5C5E;&#x6027;&#x7684;&#x96C6;&#x5408;&#xFF0C;&#x5219;&#x8FC7;&#x6E21;&#x4E8B;&#x4EF6;&#x89E6;&#x53D1;4&#x6B21;
+<strong>&#x6CE8;&#x610F;</strong>&#x5728;&#x4F4E;&#x7248;&#x672C;webkit&#x5185;&#x6838;&#x6D4F;&#x89C8;&#x5668;&#x91CC;&#x53EA;&#x89E6;&#x53D1;1&#x6B21;</p>
+<pre><code class="lang-css"><span class="hljs-selector-tag">transition</span>: <span class="hljs-selector-tag">border-width</span> 1<span class="hljs-selector-tag">s</span>;
+<span class="hljs-selector-tag">-webkit-transition</span>: <span class="hljs-selector-tag">border-width</span> 1<span class="hljs-selector-tag">s</span>;
+</code></pre>
+<p>4&#xFF09;&#x5982;&#x679C;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x662F;&#x9ED8;&#x8BA4;&#x503C;all&#xFF0C;&#x5219;&#x8FC7;&#x6E21;&#x4E8B;&#x4EF6;&#x7684;&#x6B21;&#x6570;&#x662F;&#x8BA1;&#x7B97;&#x540E;&#x7684;&#x975E;&#x590D;&#x5408;&#x7684;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x7684;&#x4E2A;&#x6570;&#x3002;&#x5982;&#x679C;&#x53D1;&#x751F;&#x8FC7;&#x6E21;&#x7684;&#x5C5E;&#x6027;&#x662F;border-width&#x548C;width&#xFF0C;&#x5219;&#x7ECF;&#x8FC7;&#x8BA1;&#x7B97;&#x540E;&#x8FC7;&#x6E21;&#x4E8B;&#x4EF6;&#x5E94;&#x8BE5;&#x89E6;&#x53D1;5&#x6B21;
+<strong>&#x6CE8;&#x610F;</strong>&#x5728;&#x4F4E;&#x7248;&#x672C;webkit&#x5185;&#x6838;&#x6D4F;&#x89C8;&#x5668;&#x4E2D;&#x5904;&#x7406;&#x60C5;&#x51B5;&#x4E5F;&#x4E00;&#x81F4;</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.test</span>{
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">50px</span>;
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid black;
+    <span class="hljs-attribute">transition</span>:all <span class="hljs-number">1s</span>;
+    <span class="hljs-attribute">-webkit-transition</span>: all <span class="hljs-number">1s</span>;
+}    
+<span class="hljs-selector-class">.test</span><span class="hljs-selector-pseudo">:hover</span>{
+    <span class="hljs-attribute">border-width</span>: <span class="hljs-number">10px</span>;
+    <span class="hljs-attribute">width</span>: <span class="hljs-number">100px</span>;
+}
+</code></pre>
+<p>5&#xFF09;&#x5982;&#x679C;&#x8FC7;&#x6E21;&#x5EF6;&#x8FDF;&#x65F6;&#x95F4;&#x4E3A;&#x8D1F;&#x503C;&#xFF0C;&#x4E14;&#x7EDD;&#x5BF9;&#x503C;&#x5927;&#x4E8E;&#x7B49;&#x4E8E;&#x8FC7;&#x6E21;&#x6301;&#x7EED;&#x65F6;&#x95F4;&#x65F6;&#xFF0C;&#x4F4E;&#x7248;&#x672C;webkit&#x5185;&#x6838;&#x6D4F;&#x89C8;&#x5668;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x8FC7;&#x6E21;&#x6548;&#x679C;&#xFF0C;&#x4F46;&#x4F1A;&#x89E6;&#x53D1;&#x8FC7;&#x6E21;&#x4E8B;&#x4EF6;&#xFF1B;&#x800C;&#x5176;&#x4ED6;&#x6D4F;&#x89C8;&#x5668;&#x5373;&#x4E0D;&#x4F1A;&#x4EA7;&#x751F;&#x8FC7;&#x6E21;&#x6548;&#x679C;&#xFF0C;&#x4E5F;&#x4E0D;&#x4F1A;&#x89E6;&#x53D1;&#x8FC7;&#x6E21;&#x4E8B;&#x4EF6;</p>
+<pre><code class="lang-css">    <span class="hljs-selector-tag">transition</span><span class="hljs-selector-pseudo">:width</span> 1<span class="hljs-selector-tag">s</span> <span class="hljs-selector-tag">-1s</span>;
+    <span class="hljs-selector-tag">-webkit-transition</span>: <span class="hljs-selector-tag">width</span> 1<span class="hljs-selector-tag">s</span> <span class="hljs-selector-tag">-1s</span>;
+</code></pre>
+<p>6&#xFF09;&#x5982;&#x679C;&#x8FC7;&#x6E21;&#x5C5E;&#x6027;&#x5B58;&#x5728;&#x590D;&#x5408;&#x5C5E;&#x6027;&#x53CA;&#x8BE5;&#x590D;&#x5408;&#x5C5E;&#x6027;&#x5305;&#x542B;&#x7684;&#x975E;&#x590D;&#x5408;&#x5C5E;&#x6027;&#xFF0C;&#x5219;&#x6D4F;&#x89C8;&#x5668;&#x8BA1;&#x7B97;&#x590D;&#x5408;&#x5C5E;&#x6027;&#x7684;&#x5B50;&#x5C5E;&#x6027;&#x65F6;&#xFF0C;&#x4E0D;&#x4F1A;&#x91CD;&#x590D;&#x8BA1;&#x7B97;&#x5DF2;&#x5305;&#x542B;&#x7684;&#x5C5E;&#x6027;
+<strong>&#x6CE8;&#x610F;</strong> &#x4F4E;&#x7248;&#x672C;webkit&#x5185;&#x6838;&#x6D4F;&#x89C8;&#x5668;&#x4F1A;&#x51FA;&#x73B0;bug&#xFF0C;&#x4E0D;&#x4EC5;&#x590D;&#x5408;&#x5C5E;&#x6027;&#x88AB;&#x5F53;&#x4F5C;&#x4E00;&#x4E2A;&#x5C5E;&#x6027;&#x6765;&#x89E6;&#x53D1;&#x4E8B;&#x4EF6;&#xFF0C;&#x800C;&#x4E14;&#x4F1A;&#x591A;&#x89E6;&#x53D1;&#x4E00;&#x6B21;</p>
+<pre><code class="lang-css"><span class="hljs-selector-class">.test</span>{
+    <span class="hljs-attribute">border</span>: <span class="hljs-number">1px</span> solid black;
+    <span class="hljs-attribute">transition</span>:border-width <span class="hljs-number">1s</span>,border-left-width <span class="hljs-number">2s</span>;
+    <span class="hljs-attribute">-webkit-transition</span>: border-width <span class="hljs-number">1s</span>,border-left-width <span class="hljs-number">2s</span>;
+}    
+<span class="hljs-selector-class">.test</span><span class="hljs-selector-pseudo">:hover</span>{
+    <span class="hljs-attribute">border-width</span>:<span class="hljs-number">10px</span>;
+}
+</code></pre>
+<p><strong>&#x6CE8;&#x610F;</strong> &#x5F53;&#x8FC7;&#x6E21;&#x4E8B;&#x4EF6;&#x6267;&#x884C;&#x5B8C;&#x540E;&#xFF0C;&#x5E94;&#x53CA;&#x65F6;&#x4F7F;&#x7528;removeEventListener&#x53D6;&#x6D88;&#x7ED1;&#x5B9A;&#xFF0C;&#x4EE5;&#x514D;&#x5BF9;&#x5176;&#x4ED6;&#x6548;&#x679C;&#x9020;&#x6210;&#x5F71;&#x54CD;</p>
+<pre><code class="lang-javascript"><span class="hljs-keyword">var</span> index = <span class="hljs-number">0</span>;
+<span class="hljs-comment">//&#x517C;&#x5BB9;&#x4F4E;&#x7248;&#x672C;safari&#x3001;IOS&#x3001;android</span>
+test.addEventListener(<span class="hljs-string">&quot;webkitTransitionEnd&quot;</span>, myFunction);
+<span class="hljs-comment">// &#x6807;&#x51C6;&#x8BED;&#x6CD5;</span>
+test.addEventListener(<span class="hljs-string">&quot;transitionend&quot;</span>, myFunction);
+<span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">myFunction</span>(<span class="hljs-params"></span>) </span>{
+    index++;
+    <span class="hljs-keyword">this</span>.innerHTML = index;
+    <span class="hljs-keyword">if</span>(index == <span class="hljs-number">1</span>){
+        test.removeEventListener(<span class="hljs-string">&quot;webkitTransitionEnd&quot;</span>, myFunction);
+        test.removeEventListener(<span class="hljs-string">&quot;transitionend&quot;</span>, myFunction);
+    }
+}
+</code></pre>
+<p>&#xFF08;&#x5B8C;&#xFF09;</p>
+
+                                
+                                </section>
+                            
+    </div>
+    <div class="search-results">
+        <div class="has-results">
+            
+            <h1 class="search-results-title"><span class='search-results-count'></span> results matching "<span class='search-query'></span>"</h1>
+            <ul class="search-results-list"></ul>
+            
+        </div>
+        <div class="no-results">
+            
+            <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+            
+        </div>
+    </div>
+</div>
+
+                        </div>
+                    </div>
+                
+            </div>
+
+            
+                
+                <a href="Flex布局学习.html" class="navigation navigation-prev " aria-label="Previous page: Flex布局">
+                    <i class="fa fa-angle-left"></i>
+                </a>
+                
+                
+                <a href="../JavaScript/" class="navigation navigation-next " aria-label="Next page: JavaScript">
+                    <i class="fa fa-angle-right"></i>
+                </a>
+                
+            
+        
+    </div>
+
+    <script>
+        var gitbook = gitbook || [];
+        gitbook.push(function() {
+            gitbook.page.hasChanged({"page":{"title":"过渡transition","level":"1.2.2","depth":2,"next":{"title":"JavaScript","level":"1.3","depth":1,"path":"JavaScript/README.md","ref":"JavaScript/README.md","articles":[{"title":"JavaScript数据类型","level":"1.3.1","depth":2,"path":"JavaScript/JavaScript数据类型.md","ref":"JavaScript/JavaScript数据类型.md","articles":[]}]},"previous":{"title":"Flex布局","level":"1.2.1","depth":2,"path":"CSS/Flex布局学习.md","ref":"CSS/Flex布局学习.md","articles":[]},"dir":"ltr"},"config":{"gitbook":"*","theme":"default","variables":{},"plugins":["livereload"],"pluginsConfig":{"livereload":{},"highlight":{},"search":{},"lunr":{"maxIndexSize":1000000,"ignoreSpecialCharacters":false},"sharing":{"facebook":true,"twitter":true,"google":false,"weibo":false,"instapaper":false,"vk":false,"all":["facebook","google","twitter","weibo","instapaper"]},"fontsettings":{"theme":"white","family":"sans","size":2},"theme-default":{"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"},"showLevel":false}},"structure":{"langs":"LANGS.md","readme":"README.md","glossary":"GLOSSARY.md","summary":"SUMMARY.md"},"pdf":{"pageNumbers":true,"fontSize":12,"fontFamily":"Arial","paperSize":"a4","chapterMark":"pagebreak","pageBreaksBefore":"/","margin":{"right":62,"left":62,"top":56,"bottom":56}},"styles":{"website":"styles/website.css","pdf":"styles/pdf.css","epub":"styles/epub.css","mobi":"styles/mobi.css","ebook":"styles/ebook.css","print":"styles/print.css"}},"file":{"path":"CSS/深入理解CSS过渡transition.md","mtime":"2019-05-23T10:50:53.304Z","type":"markdown"},"gitbook":{"version":"3.2.3","time":"2019-05-23T10:51:13.982Z"},"basePath":"..","book":{"language":""}});
+        });
+    </script>
+</div>
+
+        
+    <script src="../gitbook/gitbook.js"></script>
+    <script src="../gitbook/theme.js"></script>
+    
+        
+        <script src="../gitbook/gitbook-plugin-livereload/plugin.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search-engine.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-search/search.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/lunr.min.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-lunr/search-lunr.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-sharing/buttons.js"></script>
+        
+    
+        
+        <script src="../gitbook/gitbook-plugin-fontsettings/fontsettings.js"></script>
+        
+    
+
+    </body>
+</html>
+
